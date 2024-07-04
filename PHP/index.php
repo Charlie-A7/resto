@@ -24,7 +24,7 @@ include 'header.php';
 <script>
 
     function bookRestaurant() {
-        const restaurantsPageLink = "http://localhost/Webproject/PHP/restaurants.php";
+        const restaurantsPageLink = "http://localhost/resto/PHP/restaurants.php";
         // Redirect to the booking link
         window.location.href = restaurantsPageLink;
     }

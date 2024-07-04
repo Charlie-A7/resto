@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['userid'])) {
-    header("Location: http://localhost/Webproject/PHP/login.php");
+    header("Location: http://localhost/resto/PHP/login.php");
     exit();
 }
 
@@ -36,6 +36,9 @@ include 'header.php';
                         <p class="card-text">
                             $$$ · French, Salads, Italian
                         </p>
+                        <button class="btn btn-book" onclick="bookingFormPage()">
+                            <i class="fas fa-utensils"></i> Menu
+                        </button>
                         <button class="btn btn-book" onclick="bookingFormPage()">
                             <i class="fas fa-utensils"></i> Book Now
                         </button>
@@ -166,7 +169,7 @@ include 'header.php';
 
     <script>
         function bookingFormPage() {
-            const bookingLink = "http://localhost/Webproject/PHP/bookings-form.php"; // Replace with your actual booking form URL
+            const bookingLink = "http://localhost/resto/PHP/bookings-form.php"; // Replace with your actual booking form URL
 
             // Redirect to the booking form link
             window.location.href = bookingLink;

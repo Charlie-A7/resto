@@ -251,15 +251,15 @@ footer ul.nav {
 }
 
 #instagramIcon:hover {
-  background-image: url("http://localhost/Webproject/images/gifs/icons8-instagram.gif");
+  background-image: url("http://localhost/resto/images/gifs/icons8-instagram.gif");
 }
 
 #facebookIcon:hover {
-  background-image: url("http://localhost/Webproject/images/gifs/icons8-facebook.gif");
+  background-image: url("http://localhost/resto/images/gifs/icons8-facebook.gif");
 }
 
 #twitterIcon:hover {
-  background-image: url("http://localhost/Webproject/images/gifs/twitter-gif.gif");
+  background-image: url("http://localhost/resto/images/gifs/twitter-gif.gif");
 }
 
 #facebookIcon:hover svg,
