@@ -21,8 +21,6 @@ include 'header.php';
     </section>
 </div>
 
-
-
 <script>
 
     function bookRestaurant() {
