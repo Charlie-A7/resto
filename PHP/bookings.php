@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['userid'])) {
-    header("Location: http://localhost/Webproject/PHP/login.php");
+    header("Location: http://localhost/resto/PHP/login.php");
     exit();
 }
 
@@ -25,7 +25,7 @@ include 'header.php';
 
     <script>
         function bookRestaurant() {
-            const restaurantsPageLink = "http://localhost/Webproject/PHP/restaurants.php";
+            const restaurantsPageLink = "http://localhost/resto/PHP/restaurants.php";
             // Redirect to the booking link
             window.location.href = restaurantsPageLink;
         }

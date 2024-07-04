@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="http://localhost/WebProject/style.css">
+    <link rel="stylesheet" href="http://localhost/resto/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -22,19 +22,19 @@
     <header>
         <div class="container-fluid p-0">
             <div class="navbar p-1 px-3">
-                <a href="http://localhost/Webproject/PHP/index.php" class="m-3 text-muted text-decoration-none">
+                <a href="http://localhost/resto/PHP/index.php" class="m-3 text-muted text-decoration-none">
                     <img src="../Images/logo/Restaurant-booking-02.png" id="logo">
                 </a>
-                <a class="navbar-brand" href="http://localhost/Webproject/PHP/index.php">RestaurantBooking</a>
+                <a class="navbar-brand" href="http://localhost/resto/PHP/index.php">RestaurantBooking</a>
                 <ul class="nav-links m-0 p-0">
                     <li class="nav-item p-2 restaurants-btn">
-                        <a class="nav-link" href="http://localhost/Webproject/PHP/restaurants.php">Restaurants</a>
+                        <a class="nav-link" href="http://localhost/resto/PHP/restaurants.php">Restaurants</a>
                     </li>
                     <li class="nav-item p-2 bookings-btn">
-                        <a class="nav-link" href="http://localhost/Webproject/PHP/bookings.php">Bookings</a>
+                        <a class="nav-link" href="http://localhost/resto/PHP/bookings.php">Bookings</a>
                     </li>
                     <li class="nav-item p-2 contactus1">
-                        <a class="nav-link" href="http://localhost/Webproject/PHP/contactus.php">Contact Us</a>
+                        <a class="nav-link" href="http://localhost/resto/PHP/contactus.php">Contact Us</a>
                     </li>
                 </ul>
                 <button class="navbar-toggler" onclick="toggleNav()"><span class="navbar-toggler-icon"></span></button>
@@ -56,22 +56,22 @@
     <div class="header-div-nav-links2">
         <ul class="header-nav-links2 m-0 p-0">
             <li class="nav-item p-1 restaurants-btn">
-                <a class="nav-link2 p-1 pr-2 " href="http://localhost/Webproject/PHP/restaurants.php">Restaurants</a>
+                <a class="nav-link2 p-1 pr-2 " href="http://localhost/resto/PHP/restaurants.php">Restaurants</a>
             </li>
             <li class="nav-item p-1 bookings-btn">
-                <a class="nav-link2 p-1 pr-2" href="http://localhost/Webproject/PHP/bookings.php">Bookings</a>
+                <a class="nav-link2 p-1 pr-2" href="http://localhost/resto/PHP/bookings.php">Bookings</a>
             </li>
             <li class="nav-item p-1 contactus2">
-                <a class="nav-link2 p-1 pr-2" href="http://localhost/Webproject/PHP/contactus.php">Contact Us</a>
+                <a class="nav-link2 p-1 pr-2" href="http://localhost/resto/PHP/contactus.php">Contact Us</a>
             </li>
             <?php
             if (!isset($_SESSION['userid'])) { ?>
                 <li class="nav-item p-1 loginbtn2">
-                    <a class="nav-link2 p-1 pr-2" href="http://localhost/Webproject/PHP/login.php">Log In</a>
+                    <a class="nav-link2 p-1 pr-2" href="http://localhost/resto/PHP/login.php">Log In</a>
                 </li>
             <?php } else { ?>
                 <li class="nav-item p-1 loginbtn2">
-                    <a class="nav-link2 p-1 pr-2" href="http://localhost/Webproject/PHP/logout.php">Log Out</a>
+                    <a class="nav-link2 p-1 pr-2" href="http://localhost/resto/PHP/logout.php">Log Out</a>
                 </li>
             <?php } ?>
         </ul>
@@ -80,11 +80,11 @@
     <script>
 
         function openLogIn() {
-            window.location.href = "http://localhost/Webproject/PHP/login.php";
+            window.location.href = "http://localhost/resto/PHP/login.php";
         }
 
         function openLogout() {
-            window.location.href = "http://localhost/Webproject/PHP/logout.php";
+            window.location.href = "http://localhost/resto/PHP/logout.php";
         }
 
         function toggleNav() {

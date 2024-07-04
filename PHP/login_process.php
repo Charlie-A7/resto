@@ -25,16 +25,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             $_SESSION['userid'] = $row['id'];
             $_SESSION['username'] = $row['username'];
-            header("Location: http://localhost/Webproject/PHP/index.php");
+            header("Location: http://localhost/resto/PHP/index.php");
             $conn->close();
             exit();
         } else {
-            header("Location: http://localhost/Webproject/PHP/login.php?passwordError=Invalid password.");
+            header("Location: http://localhost/resto/PHP/login.php?passwordError=Invalid password.");
             $conn->close();
             exit();
         }
     } else {
-        header("Location: http://localhost/Webproject/PHP/login.php?usernameError=Invalid username.");
+        header("Location: http://localhost/resto/PHP/login.php?usernameError=Invalid username.");
         $conn->close();
         exit();
     }
