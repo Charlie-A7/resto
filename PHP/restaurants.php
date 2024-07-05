@@ -31,6 +31,7 @@ $clone_result = array();
         </div>
 
         <div class="row">
+ resto-backend
             <?php
             $sql = "SELECT id, name, location, price_range, food_types, image_url FROM restaurants";
             $result = $conn->query($sql);
@@ -54,6 +55,111 @@ $clone_result = array();
                                 </button>
                             </div>
                         </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                <div class="restaurant-card">
+                    <img src="../Images/Images/SUD.jpg" class="card-img-top" />
+                    <div class="card-body restaurants-card-body">
+                        <h5 class="card-title restaurants-card-title">SUD</h5>
+                        <p class="card-text">
+                            $$$ · French, Salads, Italian
+                        </p>
+                        <button class="btn btn-book" onclick="bookingFormPage()">
+                            <i class="fas fa-utensils"></i> Menu
+                        </button>
+                        <button class="btn btn-book" onclick="bookingFormPage()">
+                            <i class="fas fa-utensils"></i> Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                <div class="restaurant-card">
+                    <img src="../Images/Images/Bartartine.jpg" class="card-img-top" />
+                    <div class="card-body restaurants-card-body">
+                        <h5 class="card-title restaurants-card-title">Bartartine - Dbayeh</h5>
+                        <p class="card-text">
+                            $$$ · Coffee, Salads, Healthy
+                        </p>
+                        <button class="btn btn-book" onclick="bookingFormPage()">
+                            <i class="fas fa-utensils"></i> Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                <div class="restaurant-card">
+                    <img src="../Images/Images/Roadster.jpg" class="card-img-top" />
+                    <div class="card-body restaurants-card-body">
+                        <h5 class="card-title restaurants-card-title">Roadster Diner - Antelias</h5>
+                        <p class="card-text">
+                            $$$ · Fast Food, Burgers, Salads
+                        </p>
+                        <button class="btn btn-book" onclick="bookingFormPage()">
+                            <i class="fas fa-utensils"></i> Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                <div class="restaurant-card">
+                    <img src="../Images/Images/Miniguette.jpg" class="card-img-top" />
+                    <div class="card-body restaurants-card-body">
+                        <h5 class="card-title restaurants-card-title">Miniguette - Jal El Dib</h5>
+                        <p class="card-text">
+                            $$$ · Fast Food, Burgers, Breakfast
+                        </p>
+                        <button class="btn btn-book" onclick="bookingFormPage()">
+                            <i class="fas fa-utensils"></i> Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                <div class="restaurant-card">
+                    <img src="../Images/Images/TheWok.jpg" class="card-img-top" />
+                    <div class="card-body restaurants-card-body">
+                        <h5 class="card-title restaurants-card-title">The Wok - Dbayeh</h5>
+                        <p class="card-text">
+                            $$$ · Asian - Chinese
+                        </p>
+                        <button class="btn btn-book" onclick="bookingFormPage()">
+                            <i class="fas fa-utensils"></i> Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                <div class="restaurant-card">
+                    <img src="../Images/Images/DeekDuke.jpg" class="card-img-top" />
+                    <div class="card-body restaurants-card-body">
+                        <h5 class="card-title restaurants-card-title">Deek Duke - Dbayeh</h5>
+                        <p class="card-text">
+                            $$$ · Chicken - Burgers
+                        </p>
+                        <button class="btn btn-book" onclick="bookingFormPage()">
+                            <i class="fas fa-utensils"></i> Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                <div class="restaurant-card">
+                    <img src="../Images/Images/Dominos.jpg" class="card-img-top" />
+                    <div class="card-body restaurants-card-body">
+                        <h5 class="card-title restaurants-card-title">Domino's - Sin El Fil</h5>
+                        <p class="card-text">
+                            $$$ · Pizza - Fast Food
+                        </p>
+                        <button class="btn btn-book" onclick="bookingFormPage()">
+                            <i class="fas fa-utensils"></i> Book Now
+                        </button>
+ main
                     </div>
                 <?php }
             } else {
@@ -65,7 +171,13 @@ $clone_result = array();
     </div>
     <script>
         function bookingFormPage() {
+ resto-backend
             const bookingLink = "http://localhost/resto/PHP/bookings-form.php";
+
+            const bookingLink = "http://localhost/resto/PHP/bookings-form.php"; // Replace with your actual booking form URL
+
+            // Redirect to the booking form link
+ main
             window.location.href = bookingLink;
         }
 

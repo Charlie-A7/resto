@@ -10,7 +10,7 @@ include 'header.php';
         <div class="section-title text-center my-3">
             <h1>How can we help you?</h1>
             <p>
-                Contact us
+                Contact us now
             </p>
         </div>
         <div class="row justify-content-center">
