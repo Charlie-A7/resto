@@ -30,14 +30,14 @@ $clone_result = array();
             </div>
         </div>
 
-        <div id="noResultsMessage" class="text-center" style="display: none;">
+        <div id="noResultsMessage" class="row text-center" style="display: none;">
             No restaurants found matching your search criteria.
         </div>
 
 
         <div class="row">
             <?php
-            $sql = "SELECT id, name, location, price_range, food_types, image_url FROM restaurants";
+            $sql = "SELECT * FROM restaurants";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {

@@ -3,7 +3,8 @@
   "description": "Restaurant booking system project using PHP and MySQL",
   "require": {
     "php": "^8.2",
-    "ext-openssl": "*"
+    "ext-openssl": "*",
+    "phpmailer/phpmailer": "^6.9"
   },
   "autoload": {
     "psr-4": {
