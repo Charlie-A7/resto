@@ -24,15 +24,15 @@ include 'header.php';
                                 <form id="loginform" method="POST" action="login_process.php">
 
                                     <div data-mdb-input-init class="form-outline mb-4">
+                                        <label class="form-label" for="login_username">Username or Email</label>
                                         <input type="text" id="login_username" class="form-control"
-                                            placeholder="Username" name="username" required />
-                                        <label class="form-label" for="login_username">Username</label>
+                                            placeholder="Username or Email" name="username" required />
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
+                                        <label class="form-label" for="login_password">Password</label>
                                         <input type="password" id="login_password" class="form-control"
                                             placeholder="Password" name="password" required />
-                                        <label class="form-label" for="login_password">Password</label>
                                     </div>
 
                                     <div class="text-center m-3">
@@ -50,7 +50,8 @@ include 'header.php';
                                             class="btn btn-primary btn-block fa-lg gradient-custom-3 mb-3 rounded"
                                             type="submit">Log in</button>
                                         <br>
-                                        <a class="text-muted" href="#!">Forgot password?</a>
+                                        <a class="text-muted" href="http://localhost/resto/PHP/forgotPass.php">Forgot
+                                            password?</a>
 
                                     </div>
 
@@ -94,33 +95,33 @@ include 'header.php';
                                 <form id="signupform" method="POST" action="signup_process.php">
 
                                     <div data-mdb-input-init class="form-outline mb-4 mb-lg-1">
+                                        <label class="form-label" for="username">Username</label>
                                         <input type="text" id="username" class="form-control" placeholder="Username"
                                             name="username" required />
-                                        <label class="form-label" for="username">Username</label>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4 mb-lg-1">
+                                        <label class="form-label" for="phone">Phone number</label>
                                         <input type="text" id="phone" class="form-control" placeholder="Phone Number"
                                             minlength="8" maxlength="8" name="phone" required />
-                                        <label class="form-label" for="phone">Phone number</label>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4 mb-lg-1">
+                                        <label class="form-label" for="email">Email</label>
                                         <input type="email" id="login-email" class="form-control"
                                             placeholder="Email address" name="email" required />
-                                        <label class="form-label" for="email">Email</label>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4 mb-lg-1">
+                                        <label class="form-label" for="password">Password</label>
                                         <input type="password" id="password" placeholder="Password" class="form-control"
                                             name="password" required />
-                                        <label class="form-label" for="password">Password</label>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4 mb-lg-1">
+                                        <label class="form-label" for="confirm_password"> Confirm Password</label>
                                         <input type="password" id="confirm_password" placeholder="Confirm Password"
                                             class="form-control" name="confirm_password" required />
-                                        <label class="form-label" for="confirm_password"> Confirm Password</label>
                                     </div>
 
                                     <div class="text-center mb-2 mt-1">

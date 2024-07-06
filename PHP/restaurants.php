@@ -30,6 +30,11 @@ $clone_result = array();
             </div>
         </div>
 
+        <div id="noResultsMessage" class="text-center" style="display: none;">
+            No restaurants found matching your search criteria.
+        </div>
+
+
         <div class="row">
             <?php
             $sql = "SELECT id, name, location, price_range, food_types, image_url FROM restaurants";
@@ -46,12 +51,19 @@ $clone_result = array();
                                     <?php echo $row['name'] . ' - ' . $row['location']; ?>
                                 </h5>
                                 <p class="card-text"><?php echo $row['price_range'] . ' · ' . $row['food_types']; ?></p>
-                                <button class="btn btn-book" onclick="menuPage()">
-                                    <i class="fas fa-utensils"></i> Menu
-                                </button>
-                                <button class="btn btn-book" onclick="bookingFormPage()">
-                                    <i class="fas fa-utensils"></i> Book Now
-                                </button>
+                                <div class="restaurant-card-buttons">
+                                    <div class="col-12 col-lg-5">
+                                        <button class="btn btn-book" onclick="bookingFormPage()">
+                                            <div class="button-content"><i class="fas fa-utensils"></i> Menu </div>
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-lg-7">
+                                        <button class="btn btn-book" onclick="bookingFormPage()">
+                                            <div class="button-content"> <i class="fas fa-utensils"></i> Book Now
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -79,25 +91,38 @@ $clone_result = array();
 
 
         let restaurantsData = <?php echo json_encode($clone_result); ?>;
-
         let searchBar = document.getElementById('searchBar');
-        let search = "";
 
         function filterRestaurants() {
             const search = searchBar.value.trim().toLowerCase();
+
+            let visibleCount = 0;
 
             for (let restaurant of restaurantsData) {
                 const matchesSearch = restaurant.name.toLowerCase().startsWith(search) ||
                     restaurant.location.toLowerCase().startsWith(search) ||
                     restaurant.food_types.toLowerCase().includes(search);
 
-                document.getElementById(`restaurant-card-${restaurant.id}`).style.display = matchesSearch ? 'block' : 'none';
+                const restaurantCard = document.getElementById(`restaurant-card-${restaurant.id}`);
+                if (restaurantCard) {
+                    restaurantCard.style.display = matchesSearch ? 'block' : 'none';
+                    if (matchesSearch) {
+                        visibleCount++;
+                    }
+                }
+            }
+
+
+            const noResultsMessage = document.getElementById('noResultsMessage');
+            // Check if no cards are visible
+            if (visibleCount === 0) {
+                noResultsMessage.style.display = 'block';
+            } else {
+                noResultsMessage.style.display = 'none';
             }
         }
 
         searchBar.addEventListener('input', filterRestaurants);
-
-
     </script>
 
     <?php include 'footer.php'; ?>

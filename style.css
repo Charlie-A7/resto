@@ -892,10 +892,10 @@ div.contact-container {
 }
 
 .restaurants-card-body {
-  height: 12.5rem;
+  height: 13.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 1.25rem !important;
 }
 
@@ -910,11 +910,37 @@ button.btn-book {
   color: white;
   transition: background-color 0.3s;
   display: block;
-  margin: 0 auto;
+  margin: 2px auto;
 }
 
 button.btn-book:hover {
   background-color: #896847;
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 1351px) {
+  .restaurants-card-body {
+    height: 12rem;
+  }
+}
+
+@media (max-width: 990px) {
+  .restaurant-card-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (min-width: 991px) {
+  .restaurant-card-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .fa-utensils {
@@ -922,8 +948,8 @@ button.btn-book:hover {
 }
 
 #restaurants-search-icon,
-#restaurants-search-bar,
-#restaurants-search-bar::placeholder {
+#searchBar,
+#searchBar::placeholder {
   color: #674e35;
 }
 
@@ -931,7 +957,7 @@ button.btn-book:hover {
   background-color: transparent;
 }
 
-#restaurants-search-bar:focus {
+#searchBar:focus {
   background-color: #fff;
   border: none;
   box-shadow: 0 0 0 0.2rem #674e35;
@@ -1016,4 +1042,15 @@ button.btn-book:hover {
 #bookAtable-btn:hover {
   background-color: #453424 !important;
   color: #674e35 !important;
+}
+
+/* Reset Password Page */
+
+#continue-reset-pass-btn,
+#reset-pass-btn {
+  width: 100% !important;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem #674e35 !important;
 }

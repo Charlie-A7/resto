@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST['username'];
     $pass = $_POST['password'];
 
-    $sql = "SELECT id, username, password FROM users WHERE username='$user'";
+    $sql = "SELECT id, username,email, password FROM users WHERE username='$user' OR email = '$user'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
