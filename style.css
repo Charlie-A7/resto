@@ -410,15 +410,35 @@ footer ul.nav {
 }
 
 /* login styles*/
+/* CSS for fade-in and fade-out */
+.fade-in {
+  display: flex;
+  flex-direction: column;
+  animation: fadeInAnimation 1s ease forwards;
+}
 
-#signup-card-body {
+.fade-out {
+  animation: fadeOutAnimation 1s ease forwards;
   display: none;
 }
 
-#login-card-body {
-  display: flex;
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 #login-signup-card {
   border-top-right-radius: 1rem !important;
   border-top-left-radius: 1rem !important;

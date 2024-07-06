@@ -10,7 +10,7 @@ include 'header.php';
             <div class="col-11 col-lg-10 col-xl-9">
                 <div class="card text-black" id="login-signup-card">
                     <div class="row g-0">
-                        <div class="col-lg-6 align-items-center justify-content-center login-signup-card-body"
+                        <div class="col-lg-6 align-items-center justify-content-center login-signup-card-body fade-in"
                             id="login-card-body">
 
                             <div
@@ -82,7 +82,7 @@ include 'header.php';
                             </div>
                         </div>
 
-                        <div class="col-lg-6 align-items-center justify-content-center login-signup-card-body"
+                        <div class="col-lg-6 align-items-center justify-content-center login-signup-card-body fade-out"
                             id="signup-card-body">
                             <div
                                 class="card-body mx-md-4 my-3 my-lg-1 align-items-center justify-content-center d-flex flex-column">
@@ -238,13 +238,17 @@ include 'header.php';
     });
 
     function CreateNew() {
-        // Hide the login form
         let loginCardBody = document.querySelector('#login-card-body');
-        loginCardBody.style.display = 'none';
-        // Show the sign-up form
         let signupCardBody = document.querySelector('#signup-card-body');
-        signupCardBody.style.display = 'flex';
-        signupCardBody.style.flexDirection = 'column';
+
+        loginCardBody.classList.remove("fade-in");
+        signupCardBody.classList.remove("fade-out");
+        loginCardBody.classList.remove("fade-out");
+        signupCardBody.classList.remove("fade-in");
+        // Hide the login form
+        loginCardBody.classList.add("fade-out");
+        // Show the sign-up form
+        signupCardBody.classList.add("fade-in");
 
         document.querySelector('.createnew-div').style.display = 'none';
         document.querySelector('.login-div').style.display = 'block';
@@ -256,14 +260,17 @@ include 'header.php';
     }
 
     function SignIn() {
-        // Hide the sign-up form 
+        let loginCardBody = document.querySelector('#login-card-body');
         let signupCardBody = document.querySelector('#signup-card-body');
-        signupCardBody.style.display = 'none';
+        loginCardBody.classList.remove("fade-out");
+        signupCardBody.classList.remove("fade-in");
+        loginCardBody.classList.remove("fade-in");
+        signupCardBody.classList.remove("fade-out");
+        // Hide the sign-up form 
+        signupCardBody.classList.add("fade-out");
 
         // Show the login form
-        let loginCardBody = document.querySelector('#login-card-body');
-        loginCardBody.style.display = 'flex';
-        loginCardBody.style.flexDirection = 'column';
+        loginCardBody.classList.add("fade-in");
 
         document.querySelector('.login-div').style.display = 'none';
         document.querySelector('.createnew-div').style.display = 'block';
