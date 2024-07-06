@@ -81,6 +81,12 @@ $clone_result = array();
             window.location.href = bookingLink;
         }
 
+        function menuPage() {
+            const menuLink = "http://localhost/resto/PHP/menu.php";
+
+            window.location.href = menuLink;
+        }
+
         // Hiding the 2 contact us buttons in the header
         document.addEventListener('DOMContentLoaded', function () {
             // Hide login buttons
