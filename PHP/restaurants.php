@@ -53,7 +53,7 @@ $clone_result = array();
                                 <p class="card-text"><?php echo $row['price_range'] . ' · ' . $row['food_types']; ?></p>
                                 <div class="restaurant-card-buttons">
                                     <div class="col-12 col-lg-5">
-                                        <button class="btn btn-book" onclick="bookingFormPage()">
+                                        <button class="btn btn-book" onclick="menuPage()">
                                             <div class="button-content"><i class="fas fa-utensils"></i> Menu </div>
                                         </button>
                                     </div>
@@ -79,6 +79,12 @@ $clone_result = array();
         function bookingFormPage() {
             const bookingLink = "http://localhost/resto/PHP/bookings-form.php";
             window.location.href = bookingLink;
+        }
+
+        function menuPage() {
+            const menuLink = "http://localhost/resto/PHP/menu.php";
+
+            window.location.href = menuLink;
         }
 
         // Hiding the 2 contact us buttons in the header
