@@ -1,22 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "web_project";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'db_connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST['username'];
     $pass = $_POST['password'];
 
-    $sql = "SELECT id, username, password FROM users WHERE username='$user'";
+    $sql = "SELECT id, username,email, password FROM users WHERE username='$user' OR email = '$user'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -25,16 +14,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             $_SESSION['userid'] = $row['id'];
             $_SESSION['username'] = $row['username'];
-            header("Location: http://localhost/Webproject/PHP/index.php");
+            header("Location: http://localhost/resto/PHP/index.php");
             $conn->close();
             exit();
         } else {
-            header("Location: http://localhost/Webproject/PHP/login.php?passwordError=Invalid password.");
+            header("Location: http://localhost/resto/PHP/login.php?passwordError=Invalid password.");
             $conn->close();
             exit();
         }
     } else {
-        header("Location: http://localhost/Webproject/PHP/login.php?usernameError=Invalid username.");
+        header("Location: http://localhost/resto/PHP/login.php?usernameError=Invalid username.");
         $conn->close();
         exit();
     }

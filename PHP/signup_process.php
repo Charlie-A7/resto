@@ -1,16 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "web_project";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'db_connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST['username'];
@@ -27,12 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emailCheckResult = $conn->query($emailCheckQuery);
 
     if ($userCheckResult->num_rows > 0) {
-        header("Location: http://localhost/Webproject/PHP/login.php?usernameErrorSignUp=Username already exists.");
+        header("Location: http://localhost/resto/PHP/login.php?usernameErrorSignUp=Username already exists.");
         $conn->close();
         exit();
 
     } elseif ($emailCheckResult->num_rows > 0) {
-        header("Location: http://localhost/Webproject/PHP/login.php?EmailErrorSignUp=Email already in use.");
+        header("Location: http://localhost/resto/PHP/login.php?EmailErrorSignUp=Email already in use.");
         $conn->close();
         exit();
 
@@ -45,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['userid'] = $last_id;
             $_SESSION['username'] = $user;
 
-            header("Location: http://localhost/Webproject/PHP/index.php");
+            header("Location: http://localhost/resto/PHP/index.php");
             $conn->close();
             exit();
         } else {

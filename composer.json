@@ -1,0 +1,22 @@
+{
+  "name": "user/resto",
+  "description": "Restaurant booking system project using PHP and MySQL",
+  "require": {
+    "php": "^8.2",
+    "ext-openssl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "User\\Resto\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Charlie-A7",
+      "email": "charlieaintablian@gmail.com"
+    }
+  ],
+  "require-dev": {
+    "twig/twig": "^3.0"
+  }
+}
