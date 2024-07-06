@@ -53,7 +53,7 @@ $clone_result = array();
                                 <p class="card-text"><?php echo $row['price_range'] . ' · ' . $row['food_types']; ?></p>
                                 <div class="restaurant-card-buttons">
                                     <div class="col-12 col-lg-5">
-                                        <button class="btn btn-book" onclick="bookingFormPage()">
+                                        <button class="btn btn-book" onclick="menuPage()">
                                             <div class="button-content"><i class="fas fa-utensils"></i> Menu </div>
                                         </button>
                                     </div>

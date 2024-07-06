@@ -962,6 +962,71 @@ button.btn-book:hover {
   box-shadow: 0 0 0 0.2rem #674e35;
 }
 
+/* menu css */
+.menu-container {
+  max-width: cover;
+  margin: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.menu-title {
+  display: flex;
+}
+
+.type1-row {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.type1-img {
+  text-align: right;
+}
+
+.type1-img img {
+  height: 300px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.type2-row {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.type2-img {
+  text-align: left;
+}
+
+.type2-img img {
+  height: 300px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.description1 {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.description2 {
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.menu-h2 {
+  color: red;
+}
+
+
 /* bookings page */
 
 #bookings-container {
