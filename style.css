@@ -991,12 +991,13 @@ button.btn-book:hover {
   border-radius: 10px;
 }
 
-.menu-title {
-  display: flex;
+.resto-name{
+  text-align: center;
 }
 
-.type1-row {
+.type1 {
   display: flex;
+  flex-direction: row;
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -1007,13 +1008,14 @@ button.btn-book:hover {
 }
 
 .type1-img img {
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
   border-radius: 10px;
 }
 
-.type2-row {
+.type2 {
   display: flex;
+  flex-direction: row;
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -1024,8 +1026,8 @@ button.btn-book:hover {
 }
 
 .type2-img img {
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
   border-radius: 10px;
 }
 
@@ -1046,8 +1048,73 @@ button.btn-book:hover {
   color: red;
 }
 
+.contact-info{
+  display: flex;
+  flex-direction: column;
+}
+.contact-info a{
+  text-decoration: none;
+  color: black;
+  transition: transform 0.2s;
+}
 
-/* bookings page */
+.contact-info a:hover {
+  text-decoration:none ;
+  transform: scale(1.5);
+}
+
+.price1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0;
+  margin-right: auto; 
+  text-align: right;
+}
+.price2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left:auto; 
+  text-align: left;
+  padding-right: 0;
+}
+.price1,.price2 h5 {
+  margin: 0; 
+}
+
+@media (max-width: 767px) {
+  .type1-img {
+    text-align: center;
+  }
+  .type2-img {
+    text-align: center;
+  }
+  .type1{
+    align-items: center;
+  }
+  .type2 {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .description2 {
+    margin:0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  .price2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+  }
+}
+
+/* menu end */
 
 #bookings-container {
   display: flex;
