@@ -1038,14 +1038,19 @@ button.btn-book:hover {
 }
 
 .description2 {
-  margin-right: 20px;
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
-  text-align: right;
+  text-align: right;width: 100%;
 }
 
 .menu-h2 {
   color: red;
+}
+.menu2-h2 {
+  color: red;
+  text-align: center;
+  padding-left: 70px;
 }
 
 .contact-info{
@@ -1064,20 +1069,16 @@ button.btn-book:hover {
 }
 
 .price1 {
-  display: flex;
   align-items: center;
-  justify-content: flex-start;
   padding-left: 0;
-  margin-right: auto; 
+  margin-left: auto; 
   text-align: right;
 }
 .price2 {
-  display: flex;
   align-items: center;
-  justify-content: flex-end;
-  margin-left:auto; 
-  text-align: left;
-  padding-right: 0;
+  margin-left:auto;
+  padding-top: 10px;
+  text-align: right;
 }
 .price1,.price2 h5 {
   margin: 0; 
@@ -1097,19 +1098,28 @@ button.btn-book:hover {
     flex-direction: column-reverse;
     align-items: center;
   }
+  .menu2-h2{
+    text-align: left;
+    padding: 0;
+  }
   .description2 {
-    margin:0;
+    margin-left:20px;
     display: flex;
     flex-direction: column;
     text-align: left;
-    justify-content: flex-start;
+    width: 100% !important;
+  }
+  .price1 {
+    align-items: right;
+    padding: 10;
+    margin-left: auto;
+    text-align: right;
   }
   .price2 {
-    display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding: 0;
-    margin: 0;
+    padding: 10;
+    margin-left: auto;
+    margin-right: auto;
     text-align: right;
   }
 }
