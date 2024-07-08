@@ -53,7 +53,7 @@ $clone_result = array();
                                 <p class="card-text"><?php echo $row['price_range'] . ' · ' . $row['food_types']; ?></p>
                                 <div class="restaurant-card-buttons">
                                     <div class="col-12 col-lg-5">
-                                        <button class="btn btn-book" onclick="menuPage()">
+                                        <button class="btn btn-book" onclick="menuPage(<?php echo $row['id']; ?>)">
                                             <div class="button-content"><i class="fas fa-utensils"></i> Menu </div>
                                         </button>
                                     </div>
@@ -81,9 +81,8 @@ $clone_result = array();
             window.location.href = bookingLink;
         }
 
-        function menuPage() {
-            const menuLink = "http://localhost/resto/PHP/menu.php";
-
+        function menuPage(restaurantId) {
+            const menuLink = "http://localhost/resto/PHP/menu.php?restaurant_id=" + restaurantId;
             window.location.href = menuLink;
         }
 
