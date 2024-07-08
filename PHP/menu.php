@@ -32,7 +32,7 @@ include 'header.php';
                 <div class="col-12 col-md-4 type1-img">
                     <img src="..\Images\Images\starter1.jpg">
                 </div>
-                <div class="col-10 col-md-5 description1">
+                <div class="col-10 col-md-7 description1">
                     <div>
                         <h2 class="menu-h2">Starters</h2>
                     </div>
@@ -41,13 +41,14 @@ include 'header.php';
                     while ($row1 = $result1->fetch_assoc()) {
                         if ($row1['item_type'] == 'starter') {
                             ?>
-                            <div>
-                                <h3><?php echo $row1['item_name']; ?></h3>
-                                <h5><?php echo $row1['item_description']; ?> </h5>
-                            </div>
-
-                            <div class="col-1 price1">
-                                <h5><?php echo $row1['item_price']; ?></h5>
+                            <div class=" row">
+                                <div class="col-7">
+                                    <h3><?php echo $row1['item_name']; ?></h3>
+                                    <h5><?php echo $row1['item_description']; ?> </h5>
+                                </div>
+                                <div class="col-1 price1">
+                                    <h5><?php echo $row1['item_price']; ?></h5>
+                                </div>
                             </div>
                             <?php
                         }
@@ -57,20 +58,23 @@ include 'header.php';
             </div>
 
             <div class="type2 row">
-                <div class="col-10 col-md-5 description2">
+                <div class="col-10 col-md-7 description2">
                     <div>
-                        <h2 class="menu-h2">Meal</h2>
+                        <h2 class="menu2-h2">Meal</h2>
                     </div>
+
                     <?php
                     while ($row2 = $result2->fetch_assoc()) {
                         if ($row2['item_type'] == 'meal') {
                             ?>
-                            <div class="col-1 price2">
-                                <h5><?php echo $row2['item_price']; ?></h5>
-                            </div>
-                            <div>
-                                <h3><?php echo $row2['item_name']; ?></h3>
-                                <h5><?php echo $row2['item_description']; ?></h>
+                            <div class="row">
+                                <div class="col-1 price2 order-2 order-md-1">
+                                    <h5><?php echo $row2['item_price']; ?></h5>
+                                </div>
+                                <div class="col-7 order-1 order-md-2">
+                                    <h3><?php echo $row2['item_name']; ?></h3>
+                                    <h5><?php echo $row2['item_description']; ?></h>
+                                </div>
                             </div>
                             <?php
                         }
@@ -87,7 +91,7 @@ include 'header.php';
                 <div class="col-12 col-md-4 type1-img">
                     <img src="..\Images\Images\dessert1.jpg">
                 </div>
-                <div class="col-10 col-md-5 description1">
+                <div class="col-10 col-md-7 description1">
                     <div>
                         <h2 class="menu-h2">Dessert</h2>
                     </div>
@@ -96,13 +100,14 @@ include 'header.php';
                     while ($row3 = $result3->fetch_assoc()) {
                         if ($row3['item_type'] == 'dessert') {
                             ?>
-                            <div>
-                                <h3><?php echo $row3['item_name']; ?></h3>
-                                <h5><?php echo $row3['item_description']; ?> </h5>
-
-                            </div>
-                            <div class="col-1 price1">
-                                <h5><?php echo $row3['item_price']; ?></h5>
+                            <div class="row">
+                                <div class="col-7">
+                                    <h3><?php echo $row3['item_name']; ?></h3>
+                                    <h5><?php echo $row3['item_description']; ?> </h5>
+                                </div>
+                                <div class="col-1 price1">
+                                    <h5><?php echo $row3['item_price']; ?></h5>
+                                </div>
                             </div>
                             <?php
                         }
@@ -114,20 +119,23 @@ include 'header.php';
 
 
             <div class="type2 row">
-                <div class="col-10 col-md-5 description2">
+                <div class="col-10 col-md-7 description2">
                     <div>
-                        <h2 class="menu-h2">Drinks</h2>
+                        <h2 class="menu2-h2">Drinks</h2>
                     </div>
+
                     <?php
                     while ($row4 = $result4->fetch_assoc()) {
                         if ($row4['item_type'] == 'drinks') {
                             ?>
-                            <div class="col-1 price2">
-                                <h5><?php echo $row4['item_price']; ?></h5>
-                            </div>
-                            <div>
-                                <h3><?php echo $row4['item_name']; ?></h3>
-                                <h5><?php echo $row4['item_description']; ?></h>
+                            <div class="row">
+                                <div class="col-1 price2 order-2 order-md-1">
+                                    <h5><?php echo $row4['item_price']; ?></h5>
+                                </div>
+                                <div class="col-7 order-1 order-md-2">
+                                    <h3><?php echo $row4['item_name']; ?></h3>
+                                    <h5><?php echo $row4['item_description']; ?></h>
+                                </div>
                             </div>
                             <?php
                         }
