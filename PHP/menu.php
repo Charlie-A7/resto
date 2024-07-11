@@ -8,7 +8,7 @@ include 'header.php';
 <body>
     <div class="menu-container">
         <?php
-        $restaurant_id = $_GET['restaurant_id'];
+        $restaurant_id = $_GET['id'];
         $sql = "SELECT r.name as resto_name, r.phone_nb, r.website, m.item_name, m.item_description, m.item_price ,m.item_type
                 FROM restaurants r 
                 JOIN menu m ON r.id = m.restaurant_id
@@ -134,7 +134,7 @@ include 'header.php';
                                 </div>
                                 <div class="col-7 order-1 order-md-2">
                                     <h3><?php echo $row4['item_name']; ?></h3>
-                                    <h5><?php echo $row4['item_description']; ?></h>
+                                    <h5><?php echo $row4['item_description']; ?></h5>
                                 </div>
                             </div>
                             <?php

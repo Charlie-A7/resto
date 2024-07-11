@@ -58,7 +58,7 @@ $clone_result = array();
                                         </button>
                                     </div>
                                     <div class="col-12 col-lg-7">
-                                        <button class="btn btn-book" onclick="bookingFormPage()">
+                                        <button class="btn btn-book" onclick="bookingFormPage(<?php echo $row['id']; ?>)">
                                             <div class="button-content"> <i class="fas fa-utensils"></i> Book Now
                                             </div>
                                         </button>
@@ -76,13 +76,13 @@ $clone_result = array();
         </div>
     </div>
     <script>
-        function bookingFormPage() {
-            const bookingLink = "http://localhost/resto/PHP/bookings-form.php";
+        function bookingFormPage(restaurantId) {
+            const bookingLink = "http://localhost/resto/PHP/bookings-form.php?id=" + restaurantId;
             window.location.href = bookingLink;
         }
 
         function menuPage(restaurantId) {
-            const menuLink = "http://localhost/resto/PHP/menu.php?restaurant_id=" + restaurantId;
+            const menuLink = "http://localhost/resto/PHP/menu.php?id=" + restaurantId;
             window.location.href = menuLink;
         }
 
