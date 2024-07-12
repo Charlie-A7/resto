@@ -902,7 +902,7 @@ div.contact-container {
 }
 
 .restaurant-card img {
-  height: 200px; /* Adjust as needed */
+  height: 200px; 
   object-fit: cover;
 }
 
@@ -947,7 +947,7 @@ button.btn-book:hover {
   }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 991px) {
   .restaurant-card-buttons {
     display: flex;
     flex-direction: column;
@@ -955,7 +955,7 @@ button.btn-book:hover {
   }
 }
 
-@media (min-width: 991px) {
+@media (min-width: 992px) {
   .restaurant-card-buttons {
     display: flex;
     justify-content: space-between;
@@ -1190,19 +1190,111 @@ button.btn-book:hover {
   color: #453424 !important;
 }
 
-#bookAtable-btn {
+#bookAtable-btn,#preorderStarters-btn {
   background-color: #674e35 !important;
   color: #453424 !important;
   border: none;
   padding-right: 5rem;
   padding-left: 5rem;
   padding-top: 5;
-  padding-bottom: 5;
+  padding-bottom: 7;
+}
+#preorderStarters-btn {
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 
-#bookAtable-btn:hover {
+#bookAtable-btn:hover ,#preorderStarters-btn:hover {
   background-color: #453424 !important;
   color: #674e35 !important;
+}
+
+#bookAtable-btn, #preorderStarters-btn {
+  background-color: #674e35 !important;
+  color: #453424 !important;
+  border: none;
+  padding-right: 5rem;
+  padding-left: 5rem;
+  padding-top: 5px;
+  padding-bottom: 7px;
+}
+
+#preorderStarters-btn {
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+#bookAtable-btn:hover, #preorderStarters-btn:hover {
+  background-color: #453424 !important;
+  color: #674e35 !important;
+}
+
+#bookAtable-btn, #preorderStarters-btn {
+  background-color: #674e35 !important;
+  color: #453424 !important;
+  border: none;
+  padding-right: 5rem;
+  padding-left: 5rem;
+  padding-top: 5px;
+  padding-bottom: 7px;
+}
+
+#preorderStarters-btn {
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+#bookAtable-btn:hover, #preorderStarters-btn:hover {
+  background-color: #453424 !important;
+  color: #674e35 !important;
+}
+
+/* popup */
+.preorder-image{
+    width: 300px; 
+    height: 300px; 
+    overflow: hidden; 
+}
+
+.fit-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; 
+}
+
+.preorder-info h1{
+  text-align: center;
+}
+.preorder-info{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.number-input {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.number-input button {
+  background-color: #674e35;
+  color: #ffffff; 
+  border: none;
+  padding: 5px 5px;
+  cursor: pointer;
+}
+
+.number-input button:hover {
+  background-color: #453424;
+}
+
+.number-input input {
+  width: 30px;
+  text-align: center;
+  border: 1px solid #ccc;
+  margin: 0 5px;
 }
 
 /* Reset Password Page */

@@ -52,12 +52,12 @@ $clone_result = array();
                                 </h5>
                                 <p class="card-text"><?php echo $row['price_range'] . ' · ' . $row['food_types']; ?></p>
                                 <div class="restaurant-card-buttons">
-                                    <div class="col-12 col-lg-5">
+                                    <div class="col-12 col-lg-5 px-lg-0">
                                         <button class="btn btn-book" onclick="menuPage(<?php echo $row['id']; ?>)">
                                             <div class="button-content"><i class="fas fa-utensils"></i> Menu </div>
                                         </button>
                                     </div>
-                                    <div class="col-12 col-lg-7">
+                                    <div class="col-12 col-lg-7 px-lg-0">
                                         <button class="btn btn-book" onclick="bookingFormPage(<?php echo $row['id']; ?>)">
                                             <div class="button-content"> <i class="fas fa-utensils"></i> Book Now
                                             </div>
