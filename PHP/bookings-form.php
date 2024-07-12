@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 include 'db_connection.php';
 include 'header.php';
@@ -15,6 +14,7 @@ include 'header.php';
                 WHERE r.id = $restaurant_id";
     $result = $conn->query($sql);
     $result1 = $conn->query($sql);
+    $result2 = $conn->query($sql);
     if ($result->num_rows > 0) {
         $main_row = $result->fetch_assoc();
         ?>
@@ -25,7 +25,7 @@ include 'header.php';
                     <h2 class="text-center mt-5">RESERVATION</h2>
                     <h3 class="text-center mb-4">Book a Table</h3>
 
-                    <form method="POST" action="booking_form_process.php">
+                    <form method="POST" action="bookings_form_process.php">
                         <div class="row">
                             <div class="form-group col-12 col-md-4">
                                 <input type="date" class="form-control bookings-form-form-control" id="bookings-form-date"
@@ -46,6 +46,21 @@ include 'header.php';
                                     placeholder="Message" name="message"></textarea>
                             </div>
                         </div>
+
+                        <input type="hidden" name="restaurant_id" value="<?php echo $restaurant_id ?>">
+                        <?php
+                        while ($row2 = $result2->fetch_assoc()) {
+                            if ($row2['item_type'] == 'starter') {
+                                ?>
+                                <input type="hidden" name="starter_ids[]" id="starterId_<?php echo $row2['item_id']; ?>" value="">
+                                <input type="hidden" name="starter_quantities[]" id="starterQty_<?php echo $row2['item_id']; ?>"
+                                    value="">
+                                <?php
+                            }
+                        }
+                        ?>
+                        <input type="hidden" name="total_amount" id="totalAmountInput" value="0.00">
+
                         <button type="button" class="btn btn-preorder show-modal" id="preorderStarters-btn">
                             Preorder Starters
                         </button>
@@ -93,12 +108,12 @@ include 'header.php';
                 </div>
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center mt-3">
-                        <h3>Total: <span id="totalAmount" name="total_amount">0.00</span>$</h3>
+                        <h3>Total: <span id="totalAmount">0.00</span>$</h3>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-10 col-md-4 d-flex justify-content-center">
-                        <button class="rounded" id="confirm-starters">Confirm Starters</button>
+                        <button type="button" class="rounded" id="confirm-starters">Confirm Starters</button>
                     </div>
                 </div>
             </div>
@@ -116,34 +131,6 @@ include 'header.php';
     <?php include 'footer.php'; ?>
 
     <script>
-        let total = 0;
-
-        function increment(id, price) {
-            let numberField = document.getElementById(`numberField-${id}`);
-            let currentValue = parseInt(numberField.value);
-            if (currentValue < 9) {
-                numberField.value = currentValue + 1;
-                total += parseFloat(price);
-                updateTotal();
-            }
-        }
-
-        function decrement(id, price) {
-            let numberField = document.getElementById(`numberField-${id}`);
-            let currentValue = parseInt(numberField.value);
-            if (currentValue > 0) {
-                numberField.value = currentValue - 1;
-                total -= parseFloat(price);
-                if (total < 0) total = 0;
-                updateTotal();
-            }
-        }
-
-        function updateTotal() {
-            document.getElementById('totalAmount').innerText = total.toFixed(2);
-        }
-
-
         // modal functionality
 
         const modal = document.querySelector('.modal-1');
@@ -172,6 +159,49 @@ include 'header.php';
                 closeModal();
             }
         });
-
         // modal functionality end
+
+
+        let total = 0;
+
+        function increment(id, price) {
+            let numberField = document.getElementById(`numberField-${id}`);
+            let currentValue = parseInt(numberField.value);
+            if (currentValue < 9) {
+                numberField.value = currentValue + 1;
+                total += parseFloat(price);
+                updateTotal();
+
+                document.getElementById(`starterId_${id}`).value = id;
+                document.getElementById(`starterQty_${id}`).value = currentValue + 1;
+            }
+        }
+
+        function decrement(id, price) {
+            let numberField = document.getElementById(`numberField-${id}`);
+            let currentValue = parseInt(numberField.value);
+            if (currentValue > 0) {
+                numberField.value = currentValue - 1;
+                total -= parseFloat(price);
+                if (total < 0) total = 0;
+                updateTotal();
+
+                document.getElementById(`starterId_${id}`).value = id;
+                document.getElementById(`starterQty_${id}`).value = currentValue - 1;
+            }
+        }
+
+        function updateTotal() {
+            document.getElementById('totalAmount').innerText = total.toFixed(2);
+            document.getElementById('totalAmountInput').value = total.toFixed(2);
+        }
+
+
+        // confirm starters
+
+        document.getElementById('confirm-starters').addEventListener('click', function () {
+            closeModal();
+        });
+
+        // end confirm starters
     </script>
