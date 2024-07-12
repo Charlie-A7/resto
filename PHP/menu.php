@@ -44,10 +44,10 @@ include 'header.php';
                             <div class=" row">
                                 <div class="col-7">
                                     <h3><?php echo $row1['item_name']; ?></h3>
-                                    <h5><?php echo $row1['item_description']; ?> </h5>
+                                    <h6><?php echo $row1['item_description']; ?> </h6>
                                 </div>
                                 <div class="col-1 price1">
-                                    <h5><?php echo $row1['item_price']; ?></h5>
+                                    <h5><?php echo $row1['item_price']; ?>$</h5>
                                 </div>
                             </div>
                             <?php
@@ -69,11 +69,11 @@ include 'header.php';
                             ?>
                             <div class="row">
                                 <div class="col-1 price2 order-2 order-md-1">
-                                    <h5><?php echo $row2['item_price']; ?></h5>
+                                    <h5><?php echo $row2['item_price']; ?>$</h5>
                                 </div>
                                 <div class="col-7 order-1 order-md-2">
                                     <h3><?php echo $row2['item_name']; ?></h3>
-                                    <h5><?php echo $row2['item_description']; ?></h>
+                                    <h6><?php echo $row2['item_description']; ?></h6>
                                 </div>
                             </div>
                             <?php
@@ -103,10 +103,10 @@ include 'header.php';
                             <div class="row">
                                 <div class="col-7">
                                     <h3><?php echo $row3['item_name']; ?></h3>
-                                    <h5><?php echo $row3['item_description']; ?> </h5>
+                                    <h6><?php echo $row3['item_description']; ?> </h6>
                                 </div>
                                 <div class="col-1 price1">
-                                    <h5><?php echo $row3['item_price']; ?></h5>
+                                    <h5><?php echo $row3['item_price']; ?>$</h5>
                                 </div>
                             </div>
                             <?php
@@ -130,11 +130,11 @@ include 'header.php';
                             ?>
                             <div class="row">
                                 <div class="col-1 price2 order-2 order-md-1">
-                                    <h5><?php echo $row4['item_price']; ?></h5>
+                                    <h5><?php echo $row4['item_price']; ?>$</h5>
                                 </div>
                                 <div class="col-7 order-1 order-md-2">
                                     <h3><?php echo $row4['item_name']; ?></h3>
-                                    <h5><?php echo $row4['item_description']; ?></h5>
+                                    <h6><?php echo $row4['item_description']; ?></h6>
                                 </div>
                             </div>
                             <?php

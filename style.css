@@ -902,7 +902,7 @@ div.contact-container {
 }
 
 .restaurant-card img {
-  height: 200px; 
+  height: 200px;
   object-fit: cover;
 }
 
@@ -991,7 +991,7 @@ button.btn-book:hover {
   border-radius: 10px;
 }
 
-.resto-name{
+.resto-name {
   text-align: center;
 }
 
@@ -1041,7 +1041,8 @@ button.btn-book:hover {
   margin-left: 20px;
   display: flex;
   flex-direction: column;
-  text-align: right;width: 100%;
+  text-align: right;
+  width: 100%;
 }
 
 .menu-h2 {
@@ -1053,35 +1054,36 @@ button.btn-book:hover {
   padding-left: 70px;
 }
 
-.contact-info{
+.contact-info {
   display: flex;
   flex-direction: column;
 }
-.contact-info a{
+.contact-info a {
   text-decoration: none;
   color: black;
   transition: transform 0.2s;
 }
 
 .contact-info a:hover {
-  text-decoration:none ;
+  text-decoration: none;
   transform: scale(1.5);
 }
 
 .price1 {
   align-items: center;
   padding-left: 0;
-  margin-left: auto; 
+  margin-left: auto;
   text-align: right;
 }
 .price2 {
   align-items: center;
-  margin-left:auto;
+  margin-left: auto;
   padding-top: 10px;
   text-align: right;
 }
-.price1,.price2 h5 {
-  margin: 0; 
+.price1,
+.price2 h5 {
+  margin: 0;
 }
 
 @media (max-width: 767px) {
@@ -1091,19 +1093,19 @@ button.btn-book:hover {
   .type2-img {
     text-align: center;
   }
-  .type1{
+  .type1 {
     align-items: center;
   }
   .type2 {
     flex-direction: column-reverse;
     align-items: center;
   }
-  .menu2-h2{
+  .menu2-h2 {
     text-align: left;
     padding: 0;
   }
   .description2 {
-    margin-left:20px;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -1190,7 +1192,8 @@ button.btn-book:hover {
   color: #453424 !important;
 }
 
-#bookAtable-btn,#preorderStarters-btn {
+#bookAtable-btn,
+#preorderStarters-btn {
   background-color: #674e35 !important;
   color: #453424 !important;
   border: none;
@@ -1204,12 +1207,14 @@ button.btn-book:hover {
   padding-left: 2rem;
 }
 
-#bookAtable-btn:hover ,#preorderStarters-btn:hover {
+#bookAtable-btn:hover,
+#preorderStarters-btn:hover {
   background-color: #453424 !important;
   color: #674e35 !important;
 }
 
-#bookAtable-btn, #preorderStarters-btn {
+#bookAtable-btn,
+#preorderStarters-btn {
   background-color: #674e35 !important;
   color: #453424 !important;
   border: none;
@@ -1224,12 +1229,14 @@ button.btn-book:hover {
   padding-left: 2rem;
 }
 
-#bookAtable-btn:hover, #preorderStarters-btn:hover {
+#bookAtable-btn:hover,
+#preorderStarters-btn:hover {
   background-color: #453424 !important;
   color: #674e35 !important;
 }
 
-#bookAtable-btn, #preorderStarters-btn {
+#bookAtable-btn,
+#preorderStarters-btn {
   background-color: #674e35 !important;
   color: #453424 !important;
   border: none;
@@ -1244,46 +1251,34 @@ button.btn-book:hover {
   padding-left: 2rem;
 }
 
-#bookAtable-btn:hover, #preorderStarters-btn:hover {
+#bookAtable-btn:hover,
+#preorderStarters-btn:hover {
   background-color: #453424 !important;
   color: #674e35 !important;
 }
 
 /* popup */
-.preorder-image{
-    width: 300px; 
-    height: 300px; 
-    overflow: hidden; 
-}
 
-.fit-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center; 
-}
-
-.preorder-info h1{
+.preorder-info h1 {
   text-align: center;
 }
-.preorder-info{
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
+.preorder-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .number-input {
   display: flex;
   align-items: center;
-  margin-right: 5px;
 }
 
 .number-input button {
   background-color: #674e35;
-  color: #ffffff; 
+  color: #ffffff;
   border: none;
-  padding: 5px 5px;
+  padding: 5px;
   cursor: pointer;
+  min-width: 1.5rem;
 }
 
 .number-input button:hover {
@@ -1306,4 +1301,68 @@ button.btn-book:hover {
 
 .form-control:focus {
   box-shadow: 0 0 0 0.2rem #674e35 !important;
+}
+
+/* Bookings-form modal */
+.hidden {
+  display: none;
+}
+
+.modal-1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+
+  background-color: white;
+  padding: 6rem 4rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  overflow-y: auto;
+  max-height: 80%;
+}
+
+.overlay-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+.close-modal {
+  position: absolute;
+  top: 0rem;
+  right: 2rem;
+  font-size: 4.5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+@media (max-width: 767px) {
+  .modal-1 {
+    padding: 4rem 1rem;
+  }
+
+  .close-modal {
+    right: 0.5rem;
+    font-size: 3rem;
+  }
+
+  .number-input {
+    text-align: center;
+  }
+}
+
+#confirm-starters {
+  background-color: #674e35 !important;
+  color: #453424 !important;
+  border: none;
 }
