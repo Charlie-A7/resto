@@ -161,8 +161,8 @@ include 'header.php';
         });
         // modal functionality end
 
-
         let total = 0;
+        let starterQuantities = {};
 
         function increment(id, price) {
             let numberField = document.getElementById(`numberField-${id}`);
@@ -172,8 +172,7 @@ include 'header.php';
                 total += parseFloat(price);
                 updateTotal();
 
-                document.getElementById(`starterId_${id}`).value = id;
-                document.getElementById(`starterQty_${id}`).value = currentValue + 1;
+                starterQuantities[id] = currentValue + 1;
             }
         }
 
@@ -186,8 +185,7 @@ include 'header.php';
                 if (total < 0) total = 0;
                 updateTotal();
 
-                document.getElementById(`starterId_${id}`).value = id;
-                document.getElementById(`starterQty_${id}`).value = currentValue - 1;
+                starterQuantities[id] = currentValue - 1;
             }
         }
 
@@ -200,6 +198,10 @@ include 'header.php';
         // confirm starters
 
         document.getElementById('confirm-starters').addEventListener('click', function () {
+            for (let id in starterQuantities) {
+                document.getElementById(`starterId_${id}`).value = id;
+                document.getElementById(`starterQty_${id}`).value = starterQuantities[id];
+            }
             closeModal();
         });
 
