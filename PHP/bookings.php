@@ -193,13 +193,7 @@ $conn->close();
         window.location.href = restaurantsPageLink;
     }
 
-    // Hiding the 2 contact us buttons in the header
-    document.addEventListener('DOMContentLoaded', function () {
-        // Hide login buttons
-        document.querySelectorAll('header ul li.bookings-btn, div.header-div-nav-links2 li.bookings-btn').forEach(btn => {
-            btn.style.display = 'none';
-        });
-    });
+
 
 </script>
 

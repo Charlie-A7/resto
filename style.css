@@ -1120,7 +1120,7 @@ button.btn-book:hover {
   .price2 {
     align-items: center;
     padding: 10;
-    padding-left:0 !important;
+    padding-left: 0 !important;
     margin-left: auto;
     margin-right: auto;
     text-align: right;
@@ -1192,17 +1192,17 @@ button.btn-book:hover {
   color: #555;
   margin: 0 0 20px;
 }
-#rebook{
+#rebook {
   justify-content: center;
   padding-left: 0;
   margin-left: 0;
 }
 
 @media (min-width: 721px) {
-  .booked-info{
+  .booked-info {
     text-align: left;
   }
-  .book-and-review{
+  .book-and-review {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -1296,7 +1296,6 @@ button.btn-book:hover {
     fill: var(--fill);
   }
 }
-
 
 /* bookings form page */
 
@@ -1505,7 +1504,6 @@ button.btn-book:hover {
 
 /* restaurant owner homepage */
 
-
 .dashboard {
   display: flex;
   height: auto;
@@ -1539,7 +1537,7 @@ button.btn-book:hover {
   flex-wrap: wrap;
 }
 
-.card {
+.restaurant-owner-card {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -1550,50 +1548,50 @@ button.btn-book:hover {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card-icon {
+.restaurant-owner-card-icon {
   margin-bottom: 15px;
 }
 
-.card-icon img {
+.restaurant-owner-card-icon img {
   width: 50px;
   height: 50px;
 }
 
-.card:hover {
+.restaurant-owner-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.card h3 {
+.restaurant-owner-card h3 {
   font-size: 1.5rem;
   color: #333;
   margin-bottom: 10px;
 }
 
-.card p {
+.restaurant-owner-card p {
   font-size: 1rem;
   color: #666;
 }
 
 @media (max-width: 991.2px) {
   .dashboard-content {
-      padding: 40px;
+    padding: 40px;
   }
 
   .dashboard-content h1 {
-      font-size: 2.5rem;
+    font-size: 2.5rem;
   }
 
-  .card {
-      width: 100%;
-      margin: 10px 0;
+  .restaurant-owner-card {
+    width: 100%;
+    margin: 10px 0;
   }
 
-  .card h3 {
-      font-size: 1.2rem;
+  .restaurant-owner-card h3 {
+    font-size: 1.2rem;
   }
 
-  .card p {
-      font-size: 0.9rem;
+  .restaurant-owner-card p {
+    font-size: 0.9rem;
   }
 }

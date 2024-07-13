@@ -86,14 +86,6 @@ $clone_result = array();
             window.location.href = menuLink;
         }
 
-        // Hiding the 2 contact us buttons in the header
-        document.addEventListener('DOMContentLoaded', function () {
-            // Hide login buttons
-            document.querySelectorAll('header ul li.restaurants-btn, div.header-div-nav-links2 li.restaurants-btn').forEach(btn => {
-                btn.style.display = 'none';
-            });
-        });
-
 
         let restaurantsData = <?php echo json_encode($clone_result); ?>;
         let searchBar = document.getElementById('searchBar');
