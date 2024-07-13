@@ -1502,3 +1502,98 @@ button.btn-book:hover {
   color: #453424 !important;
   border: none;
 }
+
+/* restaurant owner homepage */
+
+
+.dashboard {
+  display: flex;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Semi-transparent background */
+  border-radius: 15px;
+  margin-top: 50px;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 80px;
+  text-align: left;
+}
+
+.dashboard-content h1 {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.dashboard-content p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.dashboard-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  width: 220px;
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-icon {
+  margin-bottom: 15px;
+}
+
+.card-icon img {
+  width: 50px;
+  height: 50px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+@media (max-width: 991.2px) {
+  .dashboard-content {
+      padding: 40px;
+  }
+
+  .dashboard-content h1 {
+      font-size: 2.5rem;
+  }
+
+  .card {
+      width: 100%;
+      margin: 10px 0;
+  }
+
+  .card h3 {
+      font-size: 1.2rem;
+  }
+
+  .card p {
+      font-size: 0.9rem;
+  }
+}
