@@ -108,7 +108,7 @@ include 'header.php';
                 </div>
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center mt-3">
-                        <h3>Total: <span id="totalAmount">0.00</span>$</h3>
+                        <h3>Total: <span id="modalTotalAmount">0.00</span>$</h3>
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -161,7 +161,7 @@ include 'header.php';
         });
         // modal functionality end
 
-        let total = 0;
+        let modalTotal = 0;
         let starterQuantities = {};
 
         function increment(id, price) {
@@ -169,8 +169,8 @@ include 'header.php';
             let currentValue = parseInt(numberField.value);
             if (currentValue < 9) {
                 numberField.value = currentValue + 1;
-                total += parseFloat(price);
-                updateTotal();
+                modalTotal += parseFloat(price);
+                updateModalTotal();
 
                 starterQuantities[id] = currentValue + 1;
             }
@@ -181,17 +181,16 @@ include 'header.php';
             let currentValue = parseInt(numberField.value);
             if (currentValue > 0) {
                 numberField.value = currentValue - 1;
-                total -= parseFloat(price);
-                if (total < 0) total = 0;
-                updateTotal();
+                modalTotal -= parseFloat(price);
+                if (modalTotal < 0) modalTotal = 0;
+                updateModalTotal();
 
                 starterQuantities[id] = currentValue - 1;
             }
         }
 
-        function updateTotal() {
-            document.getElementById('totalAmount').innerText = total.toFixed(2);
-            document.getElementById('totalAmountInput').value = total.toFixed(2);
+        function updateModalTotal() {
+            document.getElementById('modalTotalAmount').innerText = modalTotal.toFixed(2);
         }
 
 
@@ -201,7 +200,8 @@ include 'header.php';
             for (let id in starterQuantities) {
                 document.getElementById(`starterId_${id}`).value = id;
                 document.getElementById(`starterQty_${id}`).value = starterQuantities[id];
-            }
+            };
+            document.getElementById('totalAmountInput').value = modalTotal.toFixed(2);
             closeModal();
         });
 
