@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['userid'])) {
+    header("Location: http://localhost/resto/PHP/login.php");
+    exit();
+}
+
 include 'db_connection.php';
 include 'header.php';
 ?>

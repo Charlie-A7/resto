@@ -102,15 +102,6 @@ include 'header.php';
 
 
 <script>
-
-    // Hiding the 2 contact us buttons in the header
-    document.addEventListener('DOMContentLoaded', function () {
-        // Hide login buttons
-        document.querySelectorAll('header ul li.contactus1, div.header-div-nav-links2 li.contactus2').forEach(btn => {
-            btn.style.display = 'none';
-        });
-    });
-
     window.addEventListener('load', checkButtonState);
     window.addEventListener('resize', checkButtonState);
 

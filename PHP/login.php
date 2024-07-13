@@ -107,7 +107,7 @@ include 'header.php';
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4 mb-lg-1">
-                                        <label class="form-label" for="email">Email</label>
+                                        <label class="form-label" for="login-email">Email</label>
                                         <input type="email" id="login-email" class="form-control"
                                             placeholder="Email address" name="email" required />
                                     </div>
@@ -293,13 +293,7 @@ include 'header.php';
         }
     }
 
-    // Hiding the buttons with class .loginbtn1 and .loginbtn2
-    document.addEventListener('DOMContentLoaded', function () {
-        // Hide login buttons
-        document.querySelectorAll('header button.loginbtn1, div.header-div-nav-links2 li.loginbtn2').forEach(btn => {
-            btn.style.display = 'none';
-        });
-    });
+
 
     // Target number input fields
     var numberInputs = document.querySelectorAll('input[type="number"]');

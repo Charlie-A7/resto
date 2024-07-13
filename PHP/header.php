@@ -18,32 +18,47 @@
 </head>
 
 <body>
-
+    <?php $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    ?>
     <header>
         <div class="container-fluid p-0">
             <div class="navbar p-1 px-3">
-                <a href="http://localhost/resto/PHP/index.php" class="m-3 text-muted text-decoration-none">
+                <a href="<?php echo (strpos($currentUrl, 'restaurant_owner_homepage.php') === false) ? 'http://localhost/resto/PHP/index.php' : 'http://localhost/resto/PHP/restaurant_owner_homepage.php'; ?>" class="m-3 text-muted text-decoration-none">
                     <img src="../Images/logo/Restaurant-booking-02.png" id="logo">
                 </a>
-                <a class="navbar-brand" href="http://localhost/resto/PHP/index.php">RestaurantBooking</a>
-                <ul class="nav-links m-0 p-0">
-                    <li class="nav-item p-2 restaurants-btn">
-                        <a class="nav-link" href="http://localhost/resto/PHP/restaurants.php">Restaurants</a>
-                    </li>
-                    <li class="nav-item p-2 bookings-btn">
-                        <a class="nav-link" href="http://localhost/resto/PHP/bookings.php">Bookings</a>
-                    </li>
-                    <li class="nav-item p-2 contactus1">
-                        <a class="nav-link" href="http://localhost/resto/PHP/contactus.php">Contact Us</a>
-                    </li>
-                </ul>
+                <a class="navbar-brand"
+                    href="<?php echo (strpos($currentUrl, 'restaurant_owner_homepage.php') === false) ? 'http://localhost/resto/PHP/index.php' : 'http://localhost/resto/PHP/restaurant_owner_homepage.php'; ?>">RestaurantBooking</a>
+
+                <?php
+                if (strpos($currentUrl, 'restaurant_owner_homepage.php') == false) { ?>
+                    <ul class="nav-links m-0 p-0">
+                        <?php
+                        if (strpos($currentUrl, 'restaurants.php') == false) { ?>
+                            <li class="nav-item p-2 restaurants-btn">
+                                <a class="nav-link" href="http://localhost/resto/PHP/restaurants.php">Restaurants</a>
+                            </li>
+                        <?php }
+                        if (strpos($currentUrl, 'bookings.php') == false) { ?>
+                            <li class="nav-item p-2 bookings-btn">
+                                <a class="nav-link" href="http://localhost/resto/PHP/bookings.php">Bookings</a>
+                            </li>
+                        <?php }
+                        if (strpos($currentUrl, 'contactus.php') == false) { ?>
+                            <li class="nav-item p-2 contactus1">
+                                <a class="nav-link" href="http://localhost/resto/PHP/contactus.php">Contact Us</a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                <?php } ?>
                 <button class="navbar-toggler" onclick="toggleNav()"><span class="navbar-toggler-icon"></span></button>
                 <?php
-                if (!isset($_SESSION['userid'])) { ?>
-                    <button data-mdb-button-init data-mdb-ripple-init
-                        class="btn btn-primary btn-block p-2 rounded loginbtn1" type="button" onclick="openLogIn()">Log
-                        in</button>
-                <?php } else { ?>
+                if (!isset($_SESSION['userid'])) {
+                    if (strpos($currentUrl, 'login.php') == false) { ?>
+                        <button data-mdb-button-init data-mdb-ripple-init
+                            class="btn btn-primary btn-block p-2 rounded loginbtn1" type="button" onclick="openLogIn()">Log
+                            in</button>
+                    <?php }
+                } else { ?>
                     <button data-mdb-button-init data-mdb-ripple-init
                         class="btn btn-primary btn-block p-2 rounded loginbtn1" type="button" onclick="openLogout()">Log
                         out</button>
@@ -55,21 +70,32 @@
 
     <div class="header-div-nav-links2">
         <ul class="header-nav-links2 m-0 p-0">
-            <li class="nav-item p-1 restaurants-btn">
-                <a class="nav-link2 p-1 pr-2 " href="http://localhost/resto/PHP/restaurants.php">Restaurants</a>
-            </li>
-            <li class="nav-item p-1 bookings-btn">
-                <a class="nav-link2 p-1 pr-2" href="http://localhost/resto/PHP/bookings.php">Bookings</a>
-            </li>
-            <li class="nav-item p-1 contactus2">
-                <a class="nav-link2 p-1 pr-2" href="http://localhost/resto/PHP/contactus.php">Contact Us</a>
-            </li>
+
             <?php
-            if (!isset($_SESSION['userid'])) { ?>
-                <li class="nav-item p-1 loginbtn2">
-                    <a class="nav-link2 p-1 pr-2" href="http://localhost/resto/PHP/login.php">Log In</a>
-                </li>
-            <?php } else { ?>
+            if (strpos($currentUrl, 'restaurant_owner_homepage.php') == false) {
+                if (strpos($currentUrl, 'restaurants.php') == false) { ?>
+                    <li class="nav-item p-1 restaurants-btn">
+                        <a class="nav-link2 p-1 pr-2 " href="http://localhost/resto/PHP/restaurants.php">Restaurants</a>
+                    </li>
+                <?php }
+                if (strpos($currentUrl, 'bookings.php') == false) { ?>
+                    <li class="nav-item p-1 bookings-btn">
+                        <a class="nav-link2 p-1 pr-2" href="http://localhost/resto/PHP/bookings.php">Bookings</a>
+                    </li>
+                <?php }
+                if (strpos($currentUrl, 'contactus.php') == false) { ?>
+                    <li class="nav-item p-1 contactus2">
+                        <a class="nav-link2 p-1 pr-2" href="http://localhost/resto/PHP/contactus.php">Contact Us</a>
+                    </li>
+                <?php }
+            }
+            if (!isset($_SESSION['userid'])) {
+                if (strpos($currentUrl, 'login.php') == false) { ?>
+                    <li class="nav-item p-1 loginbtn2">
+                        <a class="nav-link2 p-1 pr-2" href="http://localhost/resto/PHP/login.php">Log In</a>
+                    </li>
+                <?php }
+            } else { ?>
                 <li class="nav-item p-1 loginbtn2">
                     <a class="nav-link2 p-1 pr-2" href="http://localhost/resto/PHP/logout.php">Log Out</a>
                 </li>
