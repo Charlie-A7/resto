@@ -86,60 +86,72 @@ function displayBooking($row, $conn, $isPastBooking)
                 ?>
                 <h5>Total: <?php echo $row['total']; ?> $</h5>
             </div>
-            <div class="book-and-review">
-                <div class="col-12 col-md-5 " id="rebook">
-                    <button class="btn btn-book" onclick="NewBooking(<?php echo $row['restaurant_id']; ?>)">
-                        <div class="button-content"> <i class="fas fa-utensils"></i>
-                            New Booking
-                        </div>
-                    </button>
-                </div>
-                <?php if ($isPastBooking) { ?>
-                    <h5>Rating:</h5>
-                    <div class="rating col-8 col-md-5">
-                        <input type="radio" id="star-1" name="star-radio" value="star-1">
-                        <label for="star-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path pathLength="360"
-                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                </path>
-                            </svg>
-                        </label>
-                        <input type="radio" id="star-2" name="star-radio" value="star-1">
-                        <label for="star-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path pathLength="360"
-                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                </path>
-                            </svg>
-                        </label>
-                        <input type="radio" id="star-3" name="star-radio" value="star-1">
-                        <label for="star-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path pathLength="360"
-                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                </path>
-                            </svg>
-                        </label>
-                        <input type="radio" id="star-4" name="star-radio" value="star-1">
-                        <label for="star-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path pathLength="360"
-                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                </path>
-                            </svg>
-                        </label>
-                        <input type="radio" id="star-5" name="star-radio" value="star-1">
-                        <label for="star-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path pathLength="360"
-                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                </path>
-                            </svg>
-                        </label>
+            <?php if ($isPastBooking) { ?>
+                <div class="book-and-review">
+                    <div class="col-12 col-md-5 " id="rebook">
+                        <button class="btn btn-book" onclick="NewBooking(<?php echo $row['restaurant_id']; ?>)">
+                            <div class="button-content"> <i class="fas fa-utensils"></i>
+                                Add Review
+                            </div>
+                        </button>
+                        <button class="btn btn-book" onclick="NewBooking(<?php echo $row['restaurant_id']; ?>)">
+                            <div class="button-content"> <i class="fas fa-utensils"></i>
+                                New Booking
+                            </div>
+                        </button>
                     </div>
-                <?php } ?>
-            </div>
+                </div>
+                <form action="">
+                    <!-- <h5>Rating:</h5>
+                         <div class="rating col-8 col-md-5">
+                            <input type="radio" id="star-1-<?php echo $row['booking_id']; ?>"
+                                name="star-radio-<?php echo $row['booking_id']; ?>" value="1">
+                            <label for="star-1-<?php echo $row['booking_id']; ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path pathLength="360"
+                                        d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                                    </path>
+                                </svg>
+                            </label>
+                            <input type="radio" id="star-2-<?php echo $row['booking_id']; ?>"
+                                name="star-radio-<?php echo $row['booking_id']; ?>" value="2">
+                            <label for="star-2-<?php echo $row['booking_id']; ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path pathLength="360"
+                                        d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                                    </path>
+                                </svg>
+                            </label>
+                            <input type="radio" id="star-3-<?php echo $row['booking_id']; ?>"
+                                name="star-radio-<?php echo $row['booking_id']; ?>" value="3">
+                            <label for="star-3-<?php echo $row['booking_id']; ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path pathLength="360"
+                                        d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                                    </path>
+                                </svg>
+                            </label>
+                            <input type="radio" id="star-4-<?php echo $row['booking_id']; ?>"
+                                name="star-radio-<?php echo $row['booking_id']; ?>" value="4">
+                            <label for="star-4-<?php echo $row['booking_id']; ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path pathLength="360"
+                                        d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                                    </path>
+                                </svg>
+                            </label>
+                            <input type="radio" id="star-5-<?php echo $row['booking_id']; ?>"
+                                name="star-radio-<?php echo $row['booking_id']; ?>" value="5">
+                            <label for="star-5-<?php echo $row['booking_id']; ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path pathLength="360"
+                                        d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                                    </path>
+                                </svg>
+                            </label>
+                        </div> -->
+                </form>
+            <?php } ?>
         </div>
     </div>
     <?php
