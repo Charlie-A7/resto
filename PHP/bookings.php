@@ -20,7 +20,8 @@ $sql = "SELECT b.id as booking_id, b.restaurant_id, r.name as restaurant_name, b
                 b.booking_time as time, b.number_of_people as nb_of_people, b.message, b.total_price as total, r.image_url as image
             FROM bookings b
             INNER JOIN restaurants r ON b.restaurant_id = r.id
-            WHERE b.customer_id = $customer_id";
+            WHERE b.customer_id = $customer_id
+            ORDER BY b.booking_date DESC, b.booking_time DESC";
 $result = $conn->query($sql);
 $pastBookings = [];
 $futureBookings = [];
@@ -159,20 +160,38 @@ function displayBooking($row, $conn, $isPastBooking)
 
 if (count($futureBookings) > 0) {
     ?>
-    <h2 class="text-center">Upcoming Bookings</h2>
+    <button class="btn btn-toggle btn-toggle-bookings my-3" onclick="toggleUpcomingBookings()">
+        <h2 class="text-center m-0">Upcoming Bookings <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                height="24">
+                <path d="M7 10l5 5 5-5z" />
+            </svg></h2>
+    </button>
+    <div id="upcoming-bookings-container" class="shown-bookings">
+        <?php
+        foreach ($futureBookings as $row) {
+            displayBooking($row, $conn, false);
+        }
+        ?>
+    </div>
     <?php
-    foreach ($futureBookings as $row) {
-        displayBooking($row, $conn, false);
-    }
 }
 
 if (count($pastBookings) > 0) {
     ?>
-    <h2 class="text-center">Past Bookings</h2>
+    <button class="btn btn-toggle btn-toggle-bookings my-3" onclick="togglePastBookings()">
+        <h2 class="text-center m-0">Past Bookings <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                height="24">
+                <path d="M7 10l5 5 5-5z" />
+            </svg></h2>
+    </button>
+    <div id="past-bookings-container" class="shown-bookings">
+        <?php
+        foreach ($pastBookings as $row) {
+            displayBooking($row, $conn, true);
+        }
+        ?>
+    </div>
     <?php
-    foreach ($pastBookings as $row) {
-        displayBooking($row, $conn, true);
-    }
 }
 
 if (count($futureBookings) === 0 && count($pastBookings) === 0) {
@@ -196,6 +215,15 @@ $conn->close();
 
 <script>
 
+    document.querySelectorAll('.btn-toggle-bookings').forEach(button => {
+        button.addEventListener('focus', event => {
+            event.target.style.outline = 'none';
+            event.target.style.border = 'none';
+            event.target.style.boxShadow = 'none';
+        });
+    });
+
+
     function NewBooking(restaurant_id) {
         const Link = `http://localhost/resto/PHP/bookings-form.php?id=${restaurant_id}`;
         // Redirect to the booking link
@@ -208,6 +236,35 @@ $conn->close();
         window.location.href = restaurantsPageLink;
     }
 
+    function toggleUpcomingBookings() {
+        const upcomingBookingsContainer = document.getElementById('upcoming-bookings-container');
+
+        // Check if the container is currently hidden
+        const isHidden = upcomingBookingsContainer.classList.contains('hidden-bookings');
+
+        // Toggle classes based on current state
+        if (isHidden) {
+            upcomingBookingsContainer.classList.remove('hidden-bookings');
+            upcomingBookingsContainer.classList.add('shown-bookings');
+        } else {
+            upcomingBookingsContainer.classList.remove('shown-bookings');
+            upcomingBookingsContainer.classList.add('hidden-bookings');
+        }
+    }
+
+    function togglePastBookings() {
+        const pastBookingsContainer = document.getElementById('past-bookings-container');
+        const isHidden = pastBookingsContainer.classList.contains('hidden-bookings');
+
+        // Toggle classes based on current state
+        if (isHidden) {
+            pastBookingsContainer.classList.remove('hidden-bookings');
+            pastBookingsContainer.classList.add('shown-bookings');
+        } else {
+            pastBookingsContainer.classList.remove('shown-bookings');
+            pastBookingsContainer.classList.add('hidden-bookings');
+        }
+    }
 
 
 </script>
