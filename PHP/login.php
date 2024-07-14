@@ -250,8 +250,6 @@ include 'header.php';
 
         loginCardBody.classList.remove("fade-in");
         signupCardBody.classList.remove("fade-out");
-        loginCardBody.classList.remove("fade-out");
-        signupCardBody.classList.remove("fade-in");
         // Hide the login form
         loginCardBody.classList.add("fade-out");
         // Show the sign-up form
@@ -262,17 +260,16 @@ include 'header.php';
         document.querySelector('.createnew-div-mobile').style.display = 'none';
         document.querySelector('.login-div-mobile').style.display = 'block';
 
-        switchGradient('#login-signup-card-design-desktop');
+        switchGradient('#login-signup-card-design-desktop', false);
         switchGradient('#login-signup-card-design-mobile');
     }
 
     function SignIn() {
         let loginCardBody = document.querySelector('#login-card-body');
         let signupCardBody = document.querySelector('#signup-card-body');
+
         loginCardBody.classList.remove("fade-out");
         signupCardBody.classList.remove("fade-in");
-        loginCardBody.classList.remove("fade-in");
-        signupCardBody.classList.remove("fade-out");
         // Hide the sign-up form 
         signupCardBody.classList.add("fade-out");
 
@@ -285,7 +282,7 @@ include 'header.php';
         document.querySelector('.createnew-div-mobile').style.display = 'block';
 
         switchGradient('#login-signup-card-design-desktop', true);
-        switchGradient('#login-signup-card-design-mobile', true);
+        switchGradient('#login-signup-card-design-mobile');
     }
 
     function switchGradient(selector, toRight = false) {
