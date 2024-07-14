@@ -102,56 +102,28 @@ function displayBooking($row, $conn, $isPastBooking)
                         </button>
                     </div>
                 </div>
-                <form action="">
-                    <!-- <h5>Rating:</h5>
-                         <div class="rating col-8 col-md-5">
-                            <input type="radio" id="star-1-<?php echo $row['booking_id']; ?>"
-                                name="star-radio-<?php echo $row['booking_id']; ?>" value="1">
-                            <label for="star-1-<?php echo $row['booking_id']; ?>">
+                <!-- <form action="submit_review_process.php" method="POST">
+                    <h5>Rating:</h5>
+                    <div class="rating col-8 col-md-5">
+                        <?php for ($i = 1; $i <= 5; $i++): ?>
+                            <input type="radio" id="star-<?php echo $i . '-' . $row['booking_id']; ?>" name="rating"
+                                value="<?php echo $i; ?>" required>
+                            <label for="star-<?php echo $i . '-' . $row['booking_id']; ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path pathLength="360"
                                         d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
                                     </path>
                                 </svg>
                             </label>
-                            <input type="radio" id="star-2-<?php echo $row['booking_id']; ?>"
-                                name="star-radio-<?php echo $row['booking_id']; ?>" value="2">
-                            <label for="star-2-<?php echo $row['booking_id']; ?>">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path pathLength="360"
-                                        d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                    </path>
-                                </svg>
-                            </label>
-                            <input type="radio" id="star-3-<?php echo $row['booking_id']; ?>"
-                                name="star-radio-<?php echo $row['booking_id']; ?>" value="3">
-                            <label for="star-3-<?php echo $row['booking_id']; ?>">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path pathLength="360"
-                                        d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                    </path>
-                                </svg>
-                            </label>
-                            <input type="radio" id="star-4-<?php echo $row['booking_id']; ?>"
-                                name="star-radio-<?php echo $row['booking_id']; ?>" value="4">
-                            <label for="star-4-<?php echo $row['booking_id']; ?>">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path pathLength="360"
-                                        d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                    </path>
-                                </svg>
-                            </label>
-                            <input type="radio" id="star-5-<?php echo $row['booking_id']; ?>"
-                                name="star-radio-<?php echo $row['booking_id']; ?>" value="5">
-                            <label for="star-5-<?php echo $row['booking_id']; ?>">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path pathLength="360"
-                                        d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                    </path>
-                                </svg>
-                            </label>
-                        </div> -->
-                </form>
+                        <?php endfor; ?>
+                    </div>
+                    <div>
+                        <label for="comment">Comment:</label><br>
+                        <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
+                    </div>
+                    <input type="hidden" name="booking_id" value="<?php echo $row['booking_id']; ?>">
+                    <button type="submit">Submit</button>
+                </form> -->
             <?php } ?>
         </div>
     </div>
