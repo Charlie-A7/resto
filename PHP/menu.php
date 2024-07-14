@@ -4,6 +4,9 @@ session_start();
 if (!isset($_SESSION['userid'])) {
     header("Location: http://localhost/resto/PHP/login.php");
     exit();
+} elseif (isset($_SESSION['userid']) && $_SESSION['user_type'] !== 'customer') {
+    header("Location: http://localhost/resto/PHP/restaurant_owner_homepage.php");
+    exit();
 }
 
 include 'db_connection.php';

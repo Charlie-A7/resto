@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['user_type'] = $row['user_type'];
                 $_SESSION['restaurant_id'] = $row['restaurant_id'];
-                header("Location: http://localhost/resto/PHP/restaurant_owner_homepage.php?id=" . $row['restaurant_id']);
+                header("Location: http://localhost/resto/PHP/restaurant_owner_homepage.php");
                 $conn->close();
                 exit();
             } else {
