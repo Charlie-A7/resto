@@ -1596,6 +1596,129 @@ button.btn-book:hover {
   }
 }
 
+
+/* review-modul */
+.review-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 20px;
+  max-width: 320px;
+}
+
+.review-rating {
+  text-align: center;
+  display: flex;
+  flex-direction: row-reverse;
+  --stroke: #666;
+  --fill: #ffc73a;
+}
+
+.review-rating input {
+  appearance: none;
+}
+
+.review-rating label {
+  cursor: pointer;
+}
+
+.review-rating label:hover svg {
+  stroke: var(--fill);
+}
+
+.review-rating svg {
+  height: 2rem;
+  width: 2rem;
+  overflow: visible;
+  fill: transparent;
+  stroke: var(--stroke);
+  stroke-linejoin: bevel;
+  stroke-dasharray: 12;
+  animation: idle 4s linear infinite;
+  transition: stroke 0.2s, fill 0.5s;
+}
+
+.review-rating input:checked~label svg {
+  transition: 0s;
+  animation: idle 4s linear infinite, yippee 0.75s backwards;
+  fill: var(--fill);
+  stroke: var(--fill);
+  stroke-opacity: 0;
+  stroke-dasharray: 0;
+  stroke-linejoin: miter;
+  stroke-width: 8px;
+}
+
+@keyframes idle {
+  from {
+      stroke-dashoffset: 24;
+  }
+}
+
+@keyframes yippee {
+  0% {
+      transform: scale(1);
+      fill: var(--fill);
+      fill-opacity: 0;
+      stroke-opacity: 1;
+      stroke: var(--stroke);
+      stroke-dasharray: 10;
+      stroke-width: 1px;
+      stroke-linejoin: bevel;
+  }
+
+  30% {
+      transform: scale(0);
+      fill: var(--fill);
+      fill-opacity: 0;
+      stroke-opacity: 1;
+      stroke: var(--stroke);
+      stroke-dasharray: 10;
+      stroke-width: 1px;
+      stroke-linejoin: bevel;
+  }
+
+  30.1% {
+      stroke: var(--fill);
+      stroke-dasharray: 0;
+      stroke-linejoin: miter;
+      stroke-width: 8px;
+  }
+
+  60% {
+      transform: scale(1.2);
+      fill: var(--fill);
+  }
+
+
+}
+
+.submit-review-button {
+  border-color: #896847;
+  background-color: #cd9c6b;
+  width: 8rem;
+  font-size: medium;
+}
+
+.submit-review-button:hover {
+  background: #674e35;
+}
+
+.submit-review-button:active {
+  box-shadow: none !important;
+  background: #453424 !important;
+
+}
+
+#experience-feedback {
+  width: 250px;
+  padding-left: 15px;
+  padding-right: 10px;
+  height: 100px;
+}
+=======
 /* Toggle Bookings Cardsa Animations */
 @keyframes slideIn {
   0% {
@@ -1634,3 +1757,4 @@ button.btn-book:hover {
   animation: slideIn 0.5s ease forwards;
   visibility: visible;
 }
+
