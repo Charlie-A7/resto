@@ -1596,7 +1596,6 @@ button.btn-book:hover {
   }
 }
 
-
 /* review-modul */
 .review-card {
   display: flex;
@@ -1640,7 +1639,7 @@ button.btn-book:hover {
   transition: stroke 0.2s, fill 0.5s;
 }
 
-.review-rating input:checked~label svg {
+.review-rating input:checked ~ label svg {
   transition: 0s;
   animation: idle 4s linear infinite, yippee 0.75s backwards;
   fill: var(--fill);
@@ -1653,46 +1652,44 @@ button.btn-book:hover {
 
 @keyframes idle {
   from {
-      stroke-dashoffset: 24;
+    stroke-dashoffset: 24;
   }
 }
 
 @keyframes yippee {
   0% {
-      transform: scale(1);
-      fill: var(--fill);
-      fill-opacity: 0;
-      stroke-opacity: 1;
-      stroke: var(--stroke);
-      stroke-dasharray: 10;
-      stroke-width: 1px;
-      stroke-linejoin: bevel;
+    transform: scale(1);
+    fill: var(--fill);
+    fill-opacity: 0;
+    stroke-opacity: 1;
+    stroke: var(--stroke);
+    stroke-dasharray: 10;
+    stroke-width: 1px;
+    stroke-linejoin: bevel;
   }
 
   30% {
-      transform: scale(0);
-      fill: var(--fill);
-      fill-opacity: 0;
-      stroke-opacity: 1;
-      stroke: var(--stroke);
-      stroke-dasharray: 10;
-      stroke-width: 1px;
-      stroke-linejoin: bevel;
+    transform: scale(0);
+    fill: var(--fill);
+    fill-opacity: 0;
+    stroke-opacity: 1;
+    stroke: var(--stroke);
+    stroke-dasharray: 10;
+    stroke-width: 1px;
+    stroke-linejoin: bevel;
   }
 
   30.1% {
-      stroke: var(--fill);
-      stroke-dasharray: 0;
-      stroke-linejoin: miter;
-      stroke-width: 8px;
+    stroke: var(--fill);
+    stroke-dasharray: 0;
+    stroke-linejoin: miter;
+    stroke-width: 8px;
   }
 
   60% {
-      transform: scale(1.2);
-      fill: var(--fill);
+    transform: scale(1.2);
+    fill: var(--fill);
   }
-
-
 }
 
 .submit-review-button {
@@ -1709,7 +1706,6 @@ button.btn-book:hover {
 .submit-review-button:active {
   box-shadow: none !important;
   background: #453424 !important;
-
 }
 
 #experience-feedback {
@@ -1718,7 +1714,7 @@ button.btn-book:hover {
   padding-right: 10px;
   height: 100px;
 }
-=======
+
 /* Toggle Bookings Cardsa Animations */
 @keyframes slideIn {
   0% {
@@ -1757,4 +1753,3 @@ button.btn-book:hover {
   animation: slideIn 0.5s ease forwards;
   visibility: visible;
 }
-
