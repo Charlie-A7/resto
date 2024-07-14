@@ -986,7 +986,7 @@ button.btn-book:hover {
 .menu-container {
   max-width: cover;
   margin: 10px;
-  background: rgba(0, 0, 0, 0.7);
+  /* background: rgba(0, 0, 0, 0.7); */
   padding: 20px;
   border-radius: 10px;
 }

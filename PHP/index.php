@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'owner') {
+    header("Location: http://localhost/resto/PHP/restaurant_owner_homepage.php");
+    exit();
+}
+
 include 'header.php';
 
 ?>

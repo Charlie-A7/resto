@@ -23,14 +23,15 @@
     <header>
         <div class="container-fluid p-0">
             <div class="navbar p-1 px-3">
-                <a href="<?php echo (strpos($currentUrl, 'restaurant_owner_homepage.php') === false) ? 'http://localhost/resto/PHP/index.php' : 'http://localhost/resto/PHP/restaurant_owner_homepage.php'; ?>" class="m-3 text-muted text-decoration-none">
+                <a href="<?php echo (strpos($currentUrl, 'restaurant_owner_homepage.php') === false) ? 'http://localhost/resto/PHP/index.php' : 'http://localhost/resto/PHP/restaurant_owner_homepage.php'; ?>"
+                    class="m-3 text-muted text-decoration-none">
                     <img src="../Images/logo/Restaurant-booking-02.png" id="logo">
                 </a>
                 <a class="navbar-brand"
                     href="<?php echo (strpos($currentUrl, 'restaurant_owner_homepage.php') === false) ? 'http://localhost/resto/PHP/index.php' : 'http://localhost/resto/PHP/restaurant_owner_homepage.php'; ?>">RestaurantBooking</a>
 
                 <?php
-                if (strpos($currentUrl, 'restaurant_owner_homepage.php') == false) { ?>
+                if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'owner') { ?>
                     <ul class="nav-links m-0 p-0">
                         <?php
                         if (strpos($currentUrl, 'restaurants.php') == false) { ?>
@@ -72,7 +73,7 @@
         <ul class="header-nav-links2 m-0 p-0">
 
             <?php
-            if (strpos($currentUrl, 'restaurant_owner_homepage.php') == false) {
+            if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'owner') {
                 if (strpos($currentUrl, 'restaurants.php') == false) { ?>
                     <li class="nav-item p-1 restaurants-btn">
                         <a class="nav-link2 p-1 pr-2 " href="http://localhost/resto/PHP/restaurants.php">Restaurants</a>
