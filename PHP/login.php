@@ -182,12 +182,19 @@ include 'header.php';
         // Hide the login form
         function showSignUpForm() {
             let loginCardBody = document.querySelector('#login-card-body');
-            loginCardBody.style.display = 'none';
+            let signupCardBody = document.querySelector('#signup-card-body');
+
+            // Remove existing classes
+            loginCardBody.classList.remove("fade-out");
+            signupCardBody.classList.remove("fade-in");
+            loginCardBody.classList.remove("fade-in");
+            signupCardBody.classList.remove("fade-out");
+
+            // Hide the login form
+            loginCardBody.classList.add("fade-out");
 
             // Show the sign-up form
-            let signupCardBody = document.querySelector('#signup-card-body');
-            signupCardBody.style.display = 'flex';
-            signupCardBody.style.flexDirection = 'column';
+            signupCardBody.classList.add("fade-in");
 
             document.querySelector('.createnew-div').style.display = 'none';
             document.querySelector('.login-div').style.display = 'block';
