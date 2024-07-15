@@ -60,11 +60,11 @@ function displayBooking($row, $conn, $isPastBooking)
                          WHERE ps.booking_id = $booking_id";
     $starters_result = $conn->query($starters_sql);
 
-    $disabled_sql = "SELECT reviews.status 
+    $disabled_sql = "SELECT reviews.rating 
     FROM reviews 
     WHERE reviews.booking_id = $booking_id";
     $disabled_result = $conn->query($disabled_sql);
-    $review_status = $disabled_result && $disabled_result->num_rows > 0 ? $disabled_result->fetch_assoc()['status'] : null;
+    $review_status = $disabled_result && $disabled_result->num_rows > 0 ? $disabled_result->fetch_assoc()['rating'] : null;
 
 
     ?>
@@ -220,8 +220,6 @@ $conn->close();
 
 <script>
 
-    let booking_id;
-
     // modal for review
     const modal = document.querySelector('.modal-review');
     const overlay = document.querySelector('.overlay-review');
@@ -238,16 +236,19 @@ $conn->close();
 
         submitBtn = modal.querySelector('.submit-review-button');
         submitBtn.id = `submit-review-btn-${bookingId}`;
-        booking_id = bookingId;
     }
 
-    // disabling the add review button on form click
-    document.getElementById('reviewForm').addEventListener('submit', function () {
-        document.getElementById(`show-modal-btn-${booking_id}`).disabled = true;
-    });
-    //end disabling btn ... 
-
     const closeModal = function () {
+        const starInputs = modal.querySelectorAll('input[name="rating"]');
+        starInputs.forEach(star => {
+            star.checked = false;
+        });
+
+        // Reset message
+        const messageInput = modal.querySelector('textarea[name="comment"]');
+        messageInput.value = '';
+
+        // hide modal
         modal.classList.add('hidden');
         overlay.classList.add('hidden');
         document.body.style.overflow = 'auto';
@@ -272,18 +273,21 @@ $conn->close();
         });
     });
 
+    function redirectToPage(restaurantId, page) {
+        const redirectUrl = `http://localhost/resto/PHP/redirect_restaurant.php?id=${restaurantId}&page=${page}`;
+        window.location.href = redirectUrl;
+    }
 
     function NewBooking(restaurant_id) {
-        const Link = `http://localhost/resto/PHP/bookings-form.php?id=${restaurant_id}`;
-        // Redirect to the booking link
-        window.location.href = Link;
+        redirectToPage(restaurant_id, "http://localhost/resto/PHP/bookings-form.php");
     }
 
     function bookRestaurant() {
         const restaurantsPageLink = "http://localhost/resto/PHP/restaurants.php";
-        // Redirect to the booking link
         window.location.href = restaurantsPageLink;
     }
+
+    // toggle
 
     function toggleUpcomingBookings() {
         const upcomingBookingsContainer = document.getElementById('upcoming-bookings-container');
