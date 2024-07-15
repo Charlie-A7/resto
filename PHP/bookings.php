@@ -69,22 +69,22 @@ function displayBooking($row, $conn, $isPastBooking)
 
     ?>
     <div class="booking-card row">
-        <div class="image-container col-12 col-md-5">
+        <div class="image-container row col-md-5">
             <img src="<?php echo $row['image']; ?>">
         </div>
-        <div class="content-container col-12 col-md-6">
+        <div class="content-container row col-md-6">
             <h2 class="title"><?php echo $row['restaurant_name']; ?></h2>
             <div class="booked-info">
                 <h4>Date: <?php echo $formattedDate; ?></h4>
                 <h4>Time: <?php echo $formattedTime; ?></h4>
                 <h5>Number of people: <?php echo $row['nb_of_people']; ?></h5>
-                <h5>Message: <?php echo ($row['message'] == '') ? 'None' : $row['message']; ?></h5>
+                <p>Message: <?php echo ($row['message'] == '') ? 'None' : $row['message']; ?></p>
                 <h5>Pre-ordered Starters:</h5>
                 <?php
                 if ($starters_result->num_rows > 0) {
                     while ($starter_row = $starters_result->fetch_assoc()) {
                         ?>
-                        <h6><?php echo $starter_row['starter_name']; ?> x<?php echo $starter_row['quantity']; ?></h6>
+                        <h6>•<?php echo $starter_row['starter_name']; ?> x<?php echo $starter_row['quantity']; ?></h6>
                         <?php
                     }
                 } else {
@@ -126,10 +126,10 @@ function displayBooking($row, $conn, $isPastBooking)
         <div class="container review-container">
             <div class="card review-card">
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-12 col-md-5">
                         <h5>Your rating:</h5>
                     </div>
-                    <div class="review-rating col-6">
+                    <div class="review-rating col-12 col-md-6">
                         <?php for ($i = 5; $i >= 1; $i--) { ?>
                             <input type="radio" id="star-<?php echo $i; ?>" name="rating" value="<?php echo $i; ?>"
                                 required>
