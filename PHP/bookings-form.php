@@ -16,7 +16,7 @@ include 'header.php';
 
 <body>
     <?php
-    $restaurant_id = $_GET['id'];
+    $restaurant_id = $_SESSION['restaurant_id'];
     $sql = "SELECT r.name as resto_name, m.item_id, m.item_name, m.item_description, m.item_price ,m.item_type
                 FROM restaurants r 
                 JOIN menu m ON r.id = m.restaurant_id

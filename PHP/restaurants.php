@@ -79,15 +79,31 @@ $clone_result = array();
         </div>
     </div>
     <script>
+
+        function redirectToPage(restaurantId, page) {
+            const redirectUrl = `http://localhost/resto/PHP/redirect_restaurant.php?id=${restaurantId}&page=${page}`;
+            window.location.href = redirectUrl;
+        }
+
         function bookingFormPage(restaurantId) {
-            const bookingLink = "http://localhost/resto/PHP/bookings-form.php?id=" + restaurantId;
-            window.location.href = bookingLink;
+            redirectToPage(restaurantId, "http://localhost/resto/PHP/bookings-form.php");
         }
 
         function menuPage(restaurantId) {
-            const menuLink = "http://localhost/resto/PHP/menu.php?id=" + restaurantId;
-            window.location.href = menuLink;
+            redirectToPage(restaurantId, "http://localhost/resto/PHP/menu.php");
         }
+
+
+
+        // function bookingFormPage(restaurantId) {
+        //     const bookingLink = "http://localhost/resto/PHP/bookings-form.php?id=" + restaurantId;
+        //     window.location.href = bookingLink;
+        // }
+
+        // function menuPage(restaurantId) {
+        //     const menuLink = "http://localhost/resto/PHP/menu.php?id=" + restaurantId;
+        //     window.location.href = menuLink;
+        // }
 
 
         let restaurantsData = <?php echo json_encode($clone_result); ?>;
