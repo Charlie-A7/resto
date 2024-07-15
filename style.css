@@ -1168,14 +1168,13 @@ button.btn-book:hover {
 }
 
 .booking-card {
-  width:100%;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow:hidden;
+  overflow: hidden;
   margin-bottom: 25px;
 }
-.image-container{
+.image-container {
   margin: 0 !important;
 }
 .image-container img {
@@ -1628,7 +1627,7 @@ button.btn-book:hover {
 }
 @media (min-width: 350px) and (max-width: 767px) {
   .review-rating {
-  justify-content: space-between;
+    justify-content: space-between;
   }
 }
 .review-rating input {
@@ -1724,14 +1723,12 @@ button.btn-book:hover {
   background: #453424 !important;
 }
 
-
-  #experience-feedback {
+#experience-feedback {
   width: 100%;
   padding-left: 15px;
   padding-right: 10px;
   height: 100px;
 }
-
 
 /* Toggle Bookings Cardsa Animations */
 @keyframes slideIn {

@@ -171,7 +171,7 @@ if (count($futureBookings) > 0) {
                 <path d="M7 10l5 5 5-5z" />
             </svg></h2>
     </button>
-    <div id="upcoming-bookings-container" class="shown-bookings">
+    <div id="upcoming-bookings-container" class="container shown-bookings">
         <?php
         foreach ($futureBookings as $row) {
             displayBooking($row, $conn, false);
@@ -189,7 +189,7 @@ if (count($pastBookings) > 0) {
                 <path d="M7 10l5 5 5-5z" />
             </svg></h2>
     </button>
-    <div id="past-bookings-container" class="shown-bookings">
+    <div id="past-bookings-container" class="container shown-bookings">
         <?php
         foreach ($pastBookings as $row) {
             displayBooking($row, $conn, true);
