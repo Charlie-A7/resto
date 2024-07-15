@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 session_start();
 
 
@@ -13,7 +13,6 @@ include 'header.php';
 
 
 <div class="container review-container">
-
     <div class="card review-card">
         <div class="row">
             <div class="col-5">
@@ -62,7 +61,7 @@ include 'header.php';
                 </label>
             </div>
         </div>
-        <div>
+        <!-- <div>
             <h5>Tell us about your experience:</h5>
         </div>
         <div>
@@ -72,9 +71,9 @@ include 'header.php';
         <button type="submit" value="submit-review" name="submit" id="" class="btn submit-review-button p-2"
             title="Submit Your Review">
             Submit Review
-        </button>
-    </div>
+        </button> -->
+</div>
 </div>
 
 
-<?php include 'footer.php'; ?>
+<?php include 'footer.php'; ?> -->

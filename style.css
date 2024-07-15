@@ -924,12 +924,16 @@ div.contact-container {
 }
 
 button.btn-book {
-  background-color: #b38059;
+  background-color: #b38059 !important;
   border: none;
-  color: white;
+  color: white !important;
   transition: background-color 0.3s;
   display: block;
   margin: 2px auto;
+}
+
+button.btn-book:disabled {
+  opacity: 0.8 !important;
 }
 
 button.btn-book:hover {
@@ -1752,4 +1756,46 @@ button.btn-book:hover {
   opacity: 1;
   animation: slideIn 0.5s ease forwards;
   visibility: visible;
+}
+
+/* Modal for review in bookings page */
+.modal-review {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+
+  background-color: white;
+  padding: 6rem 4rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  overflow-y: auto;
+
+  max-width: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.overlay-review {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+.close-modal-review {
+  position: absolute;
+  top: 0rem;
+  right: 2rem;
+  font-size: 4.5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
 }

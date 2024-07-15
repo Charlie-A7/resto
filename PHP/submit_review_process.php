@@ -12,7 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param('iis', $booking_id, $rating, $comment);
 
     if ($stmt->execute()) {
-        echo "Rating and comment submitted successfully.";
+        header("Location: http://localhost/resto/PHP/bookings.php");
+        $conn->close();
+        exit();
     } else {
         echo "Error submitting rating and comment: " . $conn->error;
     }

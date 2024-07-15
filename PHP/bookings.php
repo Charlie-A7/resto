@@ -59,6 +59,14 @@ function displayBooking($row, $conn, $isPastBooking)
                          INNER JOIN menu m ON ps.item_id = m.item_id
                          WHERE ps.booking_id = $booking_id";
     $starters_result = $conn->query($starters_sql);
+
+    $disabled_sql = "SELECT reviews.status 
+    FROM reviews 
+    WHERE reviews.booking_id = $booking_id";
+    $disabled_result = $conn->query($disabled_sql);
+    $review_status = $disabled_result && $disabled_result->num_rows > 0 ? $disabled_result->fetch_assoc()['status'] : null;
+
+
     ?>
     <div class="booking-card row">
         <div class="image-container col-12 col-md-5">
@@ -90,7 +98,10 @@ function displayBooking($row, $conn, $isPastBooking)
             <?php if ($isPastBooking) { ?>
                 <div class="book-and-review">
                     <div class="col-12 col-md-5 " id="rebook">
-                        <button class="btn btn-book" onclick="NewBooking(<?php echo $row['restaurant_id']; ?>)">
+                        <button class="btn btn-book  show-modal-review" onclick="OpenModal(<?php echo $row['booking_id']; ?>)"
+                            id="show-modal-btn-<?php echo $row['booking_id']; ?>" <?php if ($review_status) {
+                                   echo 'disabled';
+                               } ?>>
                             <div class="button-content"> <i class="fas fa-utensils"></i>
                                 Add Review
                             </div>
@@ -102,34 +113,56 @@ function displayBooking($row, $conn, $isPastBooking)
                         </button>
                     </div>
                 </div>
-                <!-- <form action="submit_review_process.php" method="POST">
-                    <h5>Rating:</h5>
-                    <div class="rating col-8 col-md-5">
-                        <?php for ($i = 1; $i <= 5; $i++): ?>
-                            <input type="radio" id="star-<?php echo $i . '-' . $row['booking_id']; ?>" name="rating"
-                                value="<?php echo $i; ?>" required>
-                            <label for="star-<?php echo $i . '-' . $row['booking_id']; ?>">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path pathLength="360"
-                                        d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                    </path>
-                                </svg>
-                            </label>
-                        <?php endfor; ?>
-                    </div>
-                    <div>
-                        <label for="comment">Comment:</label><br>
-                        <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
-                    </div>
-                    <input type="hidden" name="booking_id" value="<?php echo $row['booking_id']; ?>">
-                    <button type="submit">Submit</button>
-                </form> -->
             <?php } ?>
         </div>
     </div>
     <?php
 }
 
+?>
+<div class="modal-review hidden">
+    <button class="close-modal-review">&times;</button>
+    <form id="reviewForm" action="submit_review_process.php" method="POST">
+        <div class="container review-container">
+            <div class="card review-card">
+                <div class="row">
+                    <div class="col-5">
+                        <h5>Your rating:</h5>
+                    </div>
+                    <div class="review-rating col-6">
+                        <?php for ($i = 5; $i >= 1; $i--) { ?>
+                            <input type="radio" id="star-<?php echo $i; ?>" name="rating" value="<?php echo $i; ?>"
+                                required>
+                            <label for="star-<?php echo $i; ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path pathLength="360"
+                                        d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                                    </path>
+                                </svg>
+                            </label>
+                        <?php } ?>
+                    </div>
+                </div>
+                <div>
+                    <h5>Tell us about your experience:</h5>
+                </div>
+                <div>
+                    <textarea rows="6" name="comment" id="experience-feedback" class="form-control"
+                        placeholder="   Your Message"></textarea>
+                </div>
+                <input type="hidden" name="booking_id" value="">
+
+                <button type="submit" value="submit-review" name="submit" id="" class="btn submit-review-button p-2"
+                    title="Submit Your Review">
+                    Submit Review
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="overlay-review hidden"></div>
+
+<?php
 if (count($futureBookings) > 0) {
     ?>
     <button class="btn btn-toggle btn-toggle-bookings my-3" onclick="toggleUpcomingBookings()">
@@ -187,6 +220,50 @@ $conn->close();
 
 <script>
 
+    let booking_id;
+
+    // modal for review
+    const modal = document.querySelector('.modal-review');
+    const overlay = document.querySelector('.overlay-review');
+    const btnCloseModal = document.querySelector('.close-modal-review');
+    const btnsOpenModal = document.querySelectorAll('.show-modal-review');
+
+
+    function OpenModal(bookingId) {
+        const bookingIdInput = modal.querySelector('input[name="booking_id"]');
+        bookingIdInput.value = bookingId;
+        modal.classList.remove('hidden');
+        overlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+
+        submitBtn = modal.querySelector('.submit-review-button');
+        submitBtn.id = `submit-review-btn-${bookingId}`;
+        booking_id = bookingId;
+    }
+
+    // disabling the add review button on form click
+    document.getElementById('reviewForm').addEventListener('submit', function () {
+        document.getElementById(`show-modal-btn-${booking_id}`).disabled = true;
+    });
+    //end disabling btn ... 
+
+    const closeModal = function () {
+        modal.classList.add('hidden');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    };
+
+    btnCloseModal.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+
+
+    // modal for review end
     document.querySelectorAll('.btn-toggle-bookings').forEach(button => {
         button.addEventListener('focus', event => {
             event.target.style.outline = 'none';
