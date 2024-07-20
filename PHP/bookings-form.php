@@ -38,11 +38,11 @@ include 'header.php';
                         <div class="row">
                             <div class="form-group col-12 col-md-4">
                                 <input type="date" class="form-control bookings-form-form-control" id="bookings-form-date"
-                                    name="booking_date" required />
+                                    name="booking_date" required onchange="checkDate()" />
                             </div>
                             <div class="form-group col-12 col-md-4">
                                 <input type="time" class="form-control bookings-form-form-control" id="bookings-form-time"
-                                    name="booking_time" required />
+                                    name="booking_time" required onchange="checkDate()" />
                             </div>
                             <div class="form-group col-12 col-md-4">
                                 <input type="number" class="form-control bookings-form-form-control" id="people"
@@ -140,6 +140,28 @@ include 'header.php';
     <?php include 'footer.php'; ?>
 
     <script>
+        // disable/enable book a table button based on date
+        function checkDate() {
+            const bookingDateInput = document.getElementById('bookings-form-date');
+            const bookingTimeInput = document.getElementById('bookings-form-time');
+            const bookButton = document.getElementById('bookAtable-btn');
+
+            const selectedDate = new Date(bookingDateInput.value);
+            const selectedTimeParts = bookingTimeInput.value.split(':');
+            const selectedDateTime = new Date(selectedDate);
+
+            selectedDateTime.setHours(selectedTimeParts[0], selectedTimeParts[1]);
+
+            const now = new Date();
+
+            if (selectedDateTime < now) {
+                bookButton.disabled = true;
+            } else {
+                bookButton.disabled = false;
+            }
+        }
+
+
         // modal functionality
 
         const modal = document.querySelector('.modal-1');
