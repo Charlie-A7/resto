@@ -9,6 +9,7 @@ if (!isset($_SESSION['userid'])) {
     exit();
 }
 
+include 'update_booking_status.php';
 include 'db_connection.php';
 include 'header.php';
 ?>
@@ -17,7 +18,7 @@ include 'header.php';
 <?php
 $customer_id = $_SESSION['userid'];
 $sql = "SELECT b.id as booking_id, b.restaurant_id, r.name as restaurant_name, b.customer_id, b.booking_date as date, 
-                b.booking_time as time, b.number_of_people as nb_of_people, b.message, b.total_price as total, r.image_url as image
+                b.booking_time as time, b.status, b.number_of_people as nb_of_people, b.message, b.total_price as total, r.image_url as image
             FROM bookings b
             INNER JOIN restaurants r ON b.restaurant_id = r.id
             WHERE b.customer_id = $customer_id
@@ -94,8 +95,17 @@ function displayBooking($row, $conn, $isPastBooking)
                 }
                 ?>
                 <h5>Total: <?php echo $row['total']; ?> $</h5>
+                <?php
+                $statusClass = '';
+                if ($row['status'] === 'accepted') {
+                    $statusClass = 'text-success';
+                } elseif ($row['status'] === 'declined') {
+                    $statusClass = 'text-danger';
+                }
+                ?>
+                <h4>Status: <span class="<?php echo $statusClass; ?>"><?php echo $row['status']; ?></span></h4>
             </div>
-            <?php if ($isPastBooking) { ?>
+            <?php if ($isPastBooking && $row['status'] == 'accepted') { ?>
                 <div class="book-and-review">
                     <div class="col-12 col-md-5 " id="rebook">
                         <button class="btn btn-book  show-modal-review" onclick="OpenModal(<?php echo $row['booking_id']; ?>)"

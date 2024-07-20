@@ -62,9 +62,9 @@ if ($result->num_rows > 0) {
 <script>
     function navigateTo(page) {
         const pages = {
-            reservations: "http://localhost/resto/PHP/reservations.php",
+            reservations: "http://localhost/resto/PHP/restaurant_owner_bookings.php",
             menu: "http://localhost/resto/PHP/menu.php?id=" + <?php echo $restaurantId ?>,
-            analytics: "http://localhost/resto/PHP/analytics.php",
+            analytics: "http://localhost/resto/PHP/restaurant_owner_analytics.php",
             contact: "http://localhost/resto/PHP/contactus.php"
         };
         window.location.href = pages[page];

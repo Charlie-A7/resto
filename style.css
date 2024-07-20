@@ -911,7 +911,7 @@ div.contact-container {
 }
 
 .restaurants-card-body {
-  height: 13.5rem;
+  height: 16.5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1730,7 +1730,7 @@ button.btn-book:hover {
   height: 100px;
 }
 
-/* Toggle Bookings Cardsa Animations */
+/* Toggle Bookings Cards Animations */
 @keyframes slideIn {
   0% {
     max-height: 0;
@@ -1809,4 +1809,40 @@ button.btn-book:hover {
   cursor: pointer;
   border: none;
   background: none;
+}
+
+/* Static reviews for restaurant owner ratings display */
+
+/* Static rating styles */
+.static-rating {
+  text-align: center;
+  display: flex;
+  flex-direction: row-reverse;
+  --stroke: #666;
+  --fill: #ffc73a;
+}
+
+.static-rating .star {
+  cursor: default; /* Ensure no pointer cursor */
+}
+
+.static-rating .star svg {
+  height: 2rem;
+  width: 2rem;
+  overflow: visible;
+  fill: transparent;
+  stroke: var(--stroke);
+}
+
+.static-rating .star.filled svg {
+  fill: var(--fill);
+  stroke: var(--fill);
+  stroke-width: 0;
+}
+
+@media (max-width: 991px) {
+  .static-rating .star svg {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
 }
