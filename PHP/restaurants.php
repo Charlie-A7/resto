@@ -54,6 +54,43 @@ $clone_result = array();
                                     <?php echo $row['name'] . ' - ' . $row['location']; ?>
                                 </h5>
                                 <p class="card-text"><?php echo $row['price_range'] . ' · ' . $row['food_types']; ?></p>
+
+
+
+                                <div class="row">
+                                    <div
+                                        class="col-12 <?php echo ($row['rating'] > 0) ? 'col-md-4' : ''; ?> d-flex align-items-center justify-content-center">
+                                        <h6 class="d-flex justify-content-center">
+                                            <?php
+                                            if ($row['rating'] > 0) {
+                                                echo "Rating:";
+                                            } else {
+                                                echo "No Ratings Yet";
+                                            }
+                                            ?>
+                                        </h6>
+                                    </div>
+                                    <?php
+                                    if ($row['rating'] > 0) { ?>
+                                        <div class="static-rating col-12 col-md-8 justify-content-center">
+                                            <?php
+                                            for ($i = 5; $i >= 1; $i--) {
+                                                $isActive = $i <= $row['rating'] ? 'filled' : '';
+                                                ?>
+                                                <label class="star <?php echo $isActive; ?>">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                                                        </path>
+                                                    </svg>
+                                                </label>
+                                            <?php } ?>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+
+
+
                                 <div class="restaurant-card-buttons">
                                     <div class="col-12 col-lg-5 px-lg-0">
                                         <button class="btn btn-book" onclick="menuPage(<?php echo $row['id']; ?>)">
