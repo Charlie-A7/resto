@@ -13,7 +13,12 @@ include 'db_connection.php';
 include 'header.php';
 
 // Fetch the number of people per rating
-$ratingsQuery = "SELECT rating, COUNT(*) as count FROM reviews GROUP BY rating ORDER BY rating DESC";
+$ratingsQuery = "SELECT r.rating, COUNT(*) as count 
+                    FROM reviews r
+                    JOIN bookings b ON r.booking_id = b.id
+                    WHERE b.restaurant_id = {$_SESSION['restaurant_id']}
+                    GROUP BY r.rating 
+                    ORDER BY r.rating DESC";
 $ratingsResult = mysqli_query($conn, $ratingsQuery);
 
 // Fetch the overall rating from the restaurants table

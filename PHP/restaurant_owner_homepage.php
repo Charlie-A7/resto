@@ -63,7 +63,7 @@ if ($result->num_rows > 0) {
     function navigateTo(page) {
         const pages = {
             reservations: "http://localhost/resto/PHP/restaurant_owner_bookings.php",
-            menu: "http://localhost/resto/PHP/menu.php?id=" + <?php echo $restaurantId ?>,
+            menu: "http://localhost/resto/PHP/restaurant_owner_menu.php",
             analytics: "http://localhost/resto/PHP/restaurant_owner_analytics.php",
             contact: "http://localhost/resto/PHP/contactus.php"
         };

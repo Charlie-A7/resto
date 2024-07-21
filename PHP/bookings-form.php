@@ -17,15 +17,26 @@ include 'header.php';
 <body>
     <?php
     $restaurant_id = $_SESSION['restaurant_id'];
-    $sql = "SELECT r.name as resto_name, m.item_id, m.item_name, m.item_description, m.item_price ,m.item_type
-                FROM restaurants r 
-                JOIN menu m ON r.id = m.restaurant_id
-                WHERE r.id = $restaurant_id";
+    $sql = "SELECT r.name as resto_name, m.item_id, m.item_name, m.item_description, m.item_price, m.item_type
+            FROM restaurants r 
+            JOIN menu m ON r.id = m.restaurant_id
+            WHERE r.id = $restaurant_id AND m.status = 'active'";
+    
     $result = $conn->query($sql);
-    $result1 = $conn->query($sql);
-    $result2 = $conn->query($sql);
+    
     if ($result->num_rows > 0) {
-        $main_row = $result->fetch_assoc();
+        $starters = [];
+        $main_row = null;
+
+        while ($row = $result->fetch_assoc()) {
+            if (!$main_row) {
+                $main_row = $row;
+            }
+            
+            if ($row['item_type'] == 'starter') {
+                $starters[] = $row;
+            }
+        }
         ?>
         <div class="container">
             <div class="row justify-content-center">
@@ -58,14 +69,12 @@ include 'header.php';
 
                         <input type="hidden" name="restaurant_id" value="<?php echo $restaurant_id ?>">
                         <?php
-                        while ($row2 = $result2->fetch_assoc()) {
-                            if ($row2['item_type'] == 'starter') {
-                                ?>
-                                <input type="hidden" name="starter_ids[]" id="starterId_<?php echo $row2['item_id']; ?>" value="">
-                                <input type="hidden" name="starter_quantities[]" id="starterQty_<?php echo $row2['item_id']; ?>"
-                                    value="">
-                                <?php
-                            }
+                        foreach ($starters as $starter) {
+                            ?>
+                            <input type="hidden" name="starter_ids[]" id="starterId_<?php echo $starter['item_id']; ?>" value="">
+                            <input type="hidden" name="starter_quantities[]" id="starterQty_<?php echo $starter['item_id']; ?>"
+                                value="">
+                            <?php
                         }
                         ?>
                         <input type="hidden" name="total_amount" id="totalAmountInput" value="0.00">
@@ -90,27 +99,25 @@ include 'header.php';
                             <h1 class="mb-3">Starters</h1>
                         </div>
                         <?php
-                        while ($row1 = $result1->fetch_assoc()) {
-                            if ($row1['item_type'] == 'starter') {
-                                ?>
-                                <div class="row my-2 justify-content-center">
-                                    <div class="col-9 col-md-7">
-                                        <h3><?php echo $row1['item_name']; ?></h3>
-                                        <h6><?php echo $row1['item_description']; ?></h6>
-                                    </div>
-                                    <div class="col-3 col-md-2 col-lg-1 price1 m-0 d-flex align-items-center">
-                                        <h5 class="m-0"><?php echo $row1['item_price']; ?>$</h5>
-                                    </div>
-                                    <div class="col-12 col-md-2 number-input justify-content-center">
-                                        <button class="rounded"
-                                            onclick="decrement(<?php echo $row1['item_id']; ?>,<?php echo $row1['item_price']; ?>)">-</button>
-                                        <input type="number" id="numberField-<?php echo $row1['item_id']; ?>" value="0" disabled />
-                                        <button class="rounded"
-                                            onclick="increment(<?php echo $row1['item_id']; ?>,<?php echo $row1['item_price']; ?>)">+</button>
-                                    </div>
+                        foreach ($starters as $starter) {
+                            ?>
+                            <div class="row my-2 justify-content-center">
+                                <div class="col-9 col-md-7">
+                                    <h3><?php echo $starter['item_name']; ?></h3>
+                                    <h6><?php echo $starter['item_description']; ?></h6>
                                 </div>
-                                <?php
-                            }
+                                <div class="col-3 col-md-2 col-lg-1 price1 m-0 d-flex align-items-center">
+                                    <h5 class="m-0"><?php echo $starter['item_price']; ?>$</h5>
+                                </div>
+                                <div class="col-12 col-md-2 number-input justify-content-center">
+                                    <button class="rounded"
+                                        onclick="decrement(<?php echo $starter['item_id']; ?>,<?php echo $starter['item_price']; ?>)">-</button>
+                                    <input type="number" id="numberField-<?php echo $starter['item_id']; ?>" value="0" disabled />
+                                    <button class="rounded"
+                                        onclick="increment(<?php echo $starter['item_id']; ?>,<?php echo $starter['item_price']; ?>)">+</button>
+                                </div>
+                            </div>
+                            <?php
                         }
                         ?>
                     </div>
@@ -161,9 +168,7 @@ include 'header.php';
             }
         }
 
-
         // modal functionality
-
         const modal = document.querySelector('.modal-1');
         const overlay = document.querySelector('.overlay-1');
         const btnCloseModal = document.querySelector('.close-modal');
@@ -224,17 +229,14 @@ include 'header.php';
             document.getElementById('modalTotalAmount').innerText = modalTotal.toFixed(2);
         }
 
-
         // confirm starters
-
         document.getElementById('confirm-starters').addEventListener('click', function () {
             for (let id in starterQuantities) {
                 document.getElementById(`starterId_${id}`).value = id;
                 document.getElementById(`starterQty_${id}`).value = starterQuantities[id];
-            };
+            }
             document.getElementById('totalAmountInput').value = modalTotal.toFixed(2);
             closeModal();
         });
-
         // end confirm starters
     </script>

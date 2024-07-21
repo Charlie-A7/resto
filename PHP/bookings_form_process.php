@@ -3,6 +3,8 @@
 session_start();
 include 'db_connection.php';
 
+date_default_timezone_set('Asia/Beirut');
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Retrieve form data
     $customer_id = $_SESSION['userid'];
