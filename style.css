@@ -1938,3 +1938,10 @@ button.btn-book:hover {
   right: 20px;
   z-index: 4; /* Ensure button is on top */
 }
+
+@media (max-width: 767px) {
+  .close-modal-add-menu-item {
+    right: 0.5rem;
+    font-size: 3rem;
+  }
+}

@@ -120,20 +120,23 @@ if (isset($_POST['edit_form'])) {
                     <h2 class="menu-h2"><?php echo ucfirst($type); ?></h2>
                 </div>
                 <?php foreach ($menuItems[$type] as $item): ?>
-                    <div class="row">
-                        <div class="col-7">
+                    <div class="row my-2">
+                        <div class="col-7 p-0">
                             <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
                             <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>
                         </div>
-                        <div class="col-1 price1">
+                        <div class="col-3 price1">
                             <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
                         </div>
                         <!-- Edit and Delete Buttons -->
-                        <div class="col-12">
-                            <form action="restaurant_owner_menu.php" method="post" style="display:inline;">
-                                <input type="hidden" name="item_id" value="<?php echo htmlspecialchars($item['item_id']); ?>">
-                                <button type="submit" name="edit_form" class="btn btn-warning">Edit</button>
-                            </form>
+                        <div class="col-10 d-flex justify-content-center">
+                            <div class="mx-2">
+                                <form action="restaurant_owner_menu.php" method="post" style="display:inline;">
+                                    <input type="hidden" name="item_id"
+                                        value="<?php echo htmlspecialchars($item['item_id']); ?>">
+                                    <button type="submit" name="edit_form" class="btn btn-warning">Edit</button>
+                                </form>
+                            </div>
 
                             <form id="deleteForm<?php echo $item['item_id']; ?>" method="post"
                                 action="restaurant_owner_menu.php" style="display:inline;">
@@ -157,13 +160,13 @@ if (isset($_POST['edit_form'])) {
 
 </div>
 
-<div class="button-wrapper d-flex justify-content-end mx-5 my-1">
+<div class="button-wrapper d-flex justify-content-end mx-3 mx-md-5 my-1">
     <button type="button" class="show-modal-add-menu-item">+</button>
 </div>
 
 
 <!-- Add Item Form -->
-<div class="modal-add-menu-item hidden">
+<div class="container modal-add-menu-item hidden">
     <button class="close-modal-add-menu-item">&times;</button>
     <h2 class="text-center">Add New Item</h2>
     <div class="d-flex justify-content-center m-3">
