@@ -103,24 +103,24 @@ if (isset($_POST['edit_form'])) {
 }
 ?>
 
-<div class="menu-container">
-    <div class="row">
+<div class="menu-container container">
+    <div class="row mt-2 my-4">
         <h1 class="resto-name">
             <?php echo !empty($menuItems['starter']) ? htmlspecialchars($restaurantDetails['restaurant_name']) : ''; ?>
         </h1>
     </div>
 
     <?php foreach (['starter', 'meal', 'dessert', 'drinks'] as $type): ?>
-        <div class="type1 row">
-            <div class="col-12 col-md-4 type1-img">
+        <div class="type1 row justify-content-center">
+            <!-- <div class="col-12 col-md-4 type1-img">
                 <img src="..\Images\Images\<?php echo $type; ?>1.jpg">
-            </div>
+            </div> -->
             <div class="col-10 col-md-7 description1">
                 <div>
                     <h2 class="menu-h2"><?php echo ucfirst($type); ?></h2>
                 </div>
                 <?php foreach ($menuItems[$type] as $item): ?>
-                    <div class="row my-2">
+                    <div class="row my-2 justify-content-center">
                         <div class="col-7 p-0">
                             <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
                             <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>

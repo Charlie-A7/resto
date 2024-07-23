@@ -1007,55 +1007,17 @@ button.btn-book:hover {
   margin-bottom: 20px;
 }
 
-.type1-img {
-  text-align: right;
-}
-
-.type1-img img {
-  height: 200px;
-  width: 200px;
-  border-radius: 10px;
-}
-
-.type2 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.type2-img {
-  text-align: left;
-}
-
-.type2-img img {
-  height: 200px;
-  width: 200px;
-  border-radius: 10px;
-}
-
 .description1 {
-  margin-left: 20px;
   display: flex;
   flex-direction: column;
-}
-
-.description2 {
-  margin-left: 20px;
-  display: flex;
-  flex-direction: column;
-  text-align: right;
-  width: 100%;
 }
 
 .menu-h2 {
+  display: flex;
+  justify-content: center;
   color: red;
-}
-.menu2-h2 {
-  color: red;
-  text-align: center;
-  padding-left: 70px;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
 }
 
 .contact-info {

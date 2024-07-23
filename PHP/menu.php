@@ -46,26 +46,26 @@ $conn->close();
 </head>
 
 <body>
-    <div class="menu-container">
-        <div class="row">
+    <div class="menu-container container">
+        <div class="row mt-2 my-4">
             <h1 class="resto-name"><?php echo htmlspecialchars($menuItems['starter'][0]['resto_name']); ?></h1>
         </div>
 
-        <div class="type1 row">
-            <div class="col-12 col-md-4 type1-img">
+        <div class="type1 row justify-content-center">
+            <!-- <div class="col-12 col-md-4 type1-img">
                 <img src="..\Images\Images\starter1.jpg" alt="Starters">
-            </div>
-            <div class="col-10 col-md-7 description1">
+            </div> -->
+            <div class="col-12 col-md-7 description1">
                 <div>
                     <h2 class="menu-h2">Starters</h2>
                 </div>
                 <?php foreach ($menuItems['starter'] as $item): ?>
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="col-7">
                             <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
                             <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>
                         </div>
-                        <div class="col-1 price1">
+                        <div class="col-3 price1">
                             <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
                         </div>
                     </div>
@@ -73,43 +73,43 @@ $conn->close();
             </div>
         </div>
 
-        <div class="type2 row">
-            <div class="col-10 col-md-7 description2">
+        <div class="type1 row justify-content-center">
+            <div class="col-12 col-md-7 description1">
                 <div>
-                    <h2 class="menu2-h2">Meal</h2>
+                    <h2 class="menu-h2">Meal</h2>
                 </div>
                 <?php foreach ($menuItems['meal'] as $item): ?>
-                    <div class="row">
-                        <div class="col-1 price2 order-2 order-md-1">
-                            <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
-                        </div>
-                        <div class="col-7 order-1 order-md-2">
+                    <div class="row justify-content-center">
+                        <div class="col-7">
                             <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
                             <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>
                         </div>
+                        <div class="col-3 price1">
+                            <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-            <div class="col-12 col-md-4 type2-img">
+            <!-- <div class="col-12 col-md-4 type2-img">
                 <img src="..\Images\Images\meal1.jpg" alt="Meals">
-            </div>
+            </div> -->
         </div>
 
-        <div class="type1 row">
-            <div class="col-12 col-md-4 type1-img">
+        <div class="type1 row justify-content-center">
+            <!-- <div class="col-12 col-md-4 type1-img">
                 <img src="..\Images\Images\dessert1.jpg" alt="Desserts">
-            </div>
-            <div class="col-10 col-md-7 description1">
+            </div> -->
+            <div class="col-12 col-md-7 description1">
                 <div>
                     <h2 class="menu-h2">Dessert</h2>
                 </div>
                 <?php foreach ($menuItems['dessert'] as $item): ?>
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="col-7">
                             <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
                             <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>
                         </div>
-                        <div class="col-1 price1">
+                        <div class="col-3 price1">
                             <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
                         </div>
                     </div>
@@ -117,26 +117,26 @@ $conn->close();
             </div>
         </div>
 
-        <div class="type2 row">
-            <div class="col-10 col-md-7 description2">
+        <div class="type1 row justify-content-center">
+            <div class="col-12 col-md-7 description1">
                 <div>
-                    <h2 class="menu2-h2">Drinks</h2>
+                    <h2 class="menu-h2">Drinks</h2>
                 </div>
                 <?php foreach ($menuItems['drinks'] as $item): ?>
-                    <div class="row">
-                        <div class="col-1 price2 order-2 order-md-1">
-                            <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
-                        </div>
-                        <div class="col-7 order-1 order-md-2">
+                    <div class="row justify-content-center">
+                        <div class="col-7">
                             <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
                             <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>
+                        </div>
+                        <div class="col-3 price1">
+                            <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-            <div class="col-12 col-md-4 type2-img">
+            <!-- <div class="col-12 col-md-4 type2-img">
                 <img src="..\Images\Images\drinks1.jpg" alt="Drinks">
-            </div>
+            </div> -->
         </div>
 
         <div class="contact-info row">
