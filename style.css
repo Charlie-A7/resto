@@ -1907,3 +1907,7 @@ button.btn-book:hover {
     font-size: 3rem;
   }
 }
+
+select {
+  text-transform: capitalize !important;
+}
