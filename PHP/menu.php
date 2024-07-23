@@ -13,7 +13,7 @@ include 'db_connection.php';
 include 'header.php';
 
 $restaurant_id = $_SESSION['restaurant_id'];
-$stmt = $conn->prepare("SELECT r.name as resto_name, r.phone_nb, r.website, m.item_name, m.item_description, m.item_price, m.item_type
+$stmt = $conn->prepare("SELECT m.item_name, m.item_description, m.item_price, m.item_type
                         FROM restaurants r 
                         JOIN menu m ON r.id = m.restaurant_id
                         WHERE r.id = ? AND m.status = 'active'");
@@ -32,6 +32,14 @@ while ($row = $result->fetch_assoc()) {
     $menuItems[$row['item_type']][] = $row;
 }
 
+$stmt = $conn->prepare("SELECT phone_nb, website, name as restaurant_name 
+                        FROM restaurants 
+                        WHERE id = ?");
+$stmt->bind_param("i", $restaurant_id);
+$stmt->execute();
+$restaurantDetails = $stmt->get_result()->fetch_assoc();
+$stmt->close();
+
 $conn->close();
 ?>
 
@@ -48,101 +56,112 @@ $conn->close();
 <body>
     <div class="menu-container container">
         <div class="row mt-2 my-4">
-            <h1 class="resto-name"><?php echo htmlspecialchars($menuItems['starter'][0]['resto_name']); ?></h1>
+            <h1 class="resto-name"><?php echo htmlspecialchars($restaurantDetails['restaurant_name']); ?></h1>
         </div>
 
-        <div class="type1 row justify-content-center">
-            <!-- <div class="col-12 col-md-4 type1-img">
+        <?php if ($menuItems['starter']) { ?>
+            <div class="type1 row justify-content-center">
+                <!-- <div class="col-12 col-md-4 type1-img">
                 <img src="..\Images\Images\starter1.jpg" alt="Starters">
             </div> -->
-            <div class="col-12 col-md-7 description1">
-                <div>
-                    <h2 class="menu-h2">Starters</h2>
-                </div>
-                <?php foreach ($menuItems['starter'] as $item): ?>
-                    <div class="row justify-content-center">
-                        <div class="col-7">
-                            <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
-                            <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>
-                        </div>
-                        <div class="col-3 price1">
-                            <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
-                        </div>
+                <div class="col-11 col-md-7 description1">
+                    <div>
+                        <h2 class="menu-h2">Starters</h2>
                     </div>
-                <?php endforeach; ?>
+                    <?php foreach ($menuItems['starter'] as $item): ?>
+                        <div class="row justify-content-center">
+                            <div class="col-7">
+                                <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
+                                <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>
+                            </div>
+                            <div class="col-3 price1">
+                                <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        </div>
+        <?php }
 
-        <div class="type1 row justify-content-center">
-            <div class="col-12 col-md-7 description1">
-                <div>
-                    <h2 class="menu-h2">Meal</h2>
-                </div>
-                <?php foreach ($menuItems['meal'] as $item): ?>
-                    <div class="row justify-content-center">
-                        <div class="col-7">
-                            <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
-                            <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>
-                        </div>
-                        <div class="col-3 price1">
-                            <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
-                        </div>
+        if ($menuItems['meal']) { ?>
+            <div class="type1 row justify-content-center">
+                <div class="col-11 col-md-7 description1">
+                    <div>
+                        <h2 class="menu-h2">Meal</h2>
                     </div>
-                <?php endforeach; ?>
-            </div>
-            <!-- <div class="col-12 col-md-4 type2-img">
+                    <?php foreach ($menuItems['meal'] as $item): ?>
+                        <div class="row justify-content-center">
+                            <div class="col-7">
+                                <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
+                                <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>
+                            </div>
+                            <div class="col-3 price1">
+                                <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <!-- <div class="col-12 col-md-4 type2-img">
                 <img src="..\Images\Images\meal1.jpg" alt="Meals">
             </div> -->
-        </div>
+            </div>
+        <?php }
 
-        <div class="type1 row justify-content-center">
-            <!-- <div class="col-12 col-md-4 type1-img">
+        if ($menuItems['dessert']) {
+            ?>
+            <div class="type1 row justify-content-center">
+                <!-- <div class="col-12 col-md-4 type1-img">
                 <img src="..\Images\Images\dessert1.jpg" alt="Desserts">
             </div> -->
-            <div class="col-12 col-md-7 description1">
-                <div>
-                    <h2 class="menu-h2">Dessert</h2>
-                </div>
-                <?php foreach ($menuItems['dessert'] as $item): ?>
-                    <div class="row justify-content-center">
-                        <div class="col-7">
-                            <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
-                            <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>
-                        </div>
-                        <div class="col-3 price1">
-                            <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
-                        </div>
+                <div class="col-11 col-md-7 description1">
+                    <div>
+                        <h2 class="menu-h2">Dessert</h2>
                     </div>
-                <?php endforeach; ?>
+                    <?php foreach ($menuItems['dessert'] as $item): ?>
+                        <div class="row justify-content-center">
+                            <div class="col-7">
+                                <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
+                                <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>
+                            </div>
+                            <div class="col-3 price1">
+                                <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        </div>
 
-        <div class="type1 row justify-content-center">
-            <div class="col-12 col-md-7 description1">
-                <div>
-                    <h2 class="menu-h2">Drinks</h2>
-                </div>
-                <?php foreach ($menuItems['drinks'] as $item): ?>
-                    <div class="row justify-content-center">
-                        <div class="col-7">
-                            <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
-                            <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>
-                        </div>
-                        <div class="col-3 price1">
-                            <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
-                        </div>
+        <?php }
+
+        if ($menuItems['drinks']) {
+            ?>
+            <div class="type1 row justify-content-center">
+                <div class="col-11 col-md-7 description1">
+                    <div>
+                        <h2 class="menu-h2">Drinks</h2>
                     </div>
-                <?php endforeach; ?>
-            </div>
-            <!-- <div class="col-12 col-md-4 type2-img">
+                    <?php foreach ($menuItems['drinks'] as $item): ?>
+                        <div class="row justify-content-center">
+                            <div class="col-7">
+                                <h3><?php echo htmlspecialchars($item['item_name']); ?></h3>
+                                <h6><?php echo htmlspecialchars($item['item_description']); ?></h6>
+                            </div>
+                            <div class="col-3 price1">
+                                <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <!-- <div class="col-12 col-md-4 type2-img">
                 <img src="..\Images\Images\drinks1.jpg" alt="Drinks">
             </div> -->
-        </div>
+            </div>
+        <?php } ?>
 
         <div class="contact-info row">
-            <h5><a href="tel:01256487"> 📞 <?php echo htmlspecialchars($menuItems['starter'][0]['phone_nb']); ?> </a>
+            <h5><a href="tel:01256487"> 📞 <?php echo htmlspecialchars($restaurantDetails['phone_nb']); ?> </a>
             </h5>
-            <h5><a href="http://www.sud.com"> 🌐 <?php echo htmlspecialchars($menuItems['starter'][0]['website']); ?>
+            <h5><a href="http://www.sud.com"> 🌐 <?php echo htmlspecialchars($restaurantDetails['website']); ?>
                 </a></h5>
         </div>
     </div>
