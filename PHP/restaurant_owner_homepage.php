@@ -41,17 +41,24 @@ if ($result->num_rows > 0) {
                     </div>
                     <div class="card restaurant-owner-card m-2 p-3" onclick="navigateTo('analytics')">
                         <div class="card-icon restaurant-owner-card-icon">
-                            <img src="..\Images/Images/analytics.png">
+                            <img src="..\Images\Images\analytics.png">
                         </div>
                         <h3>Analytics</h3>
                         <p>Track your restaurant's performance</p>
                     </div>
                     <div class="card restaurant-owner-card m-2 p-3" onclick="navigateTo('contact')">
                         <div class="card-icon restaurant-owner-card-icon">
-                            <img src="..\Images/Images/contact-us.png">
+                            <img src="..\Images\Images\contact-us.png">
                         </div>
                         <h3>Contact Us</h3>
                         <p>For any inquiries or help don't hesitate to contact us</p>
+                    </div>
+                    <div class="card restaurant-owner-card m-2 p-3" onclick="navigateTo('card')">
+                        <div class="card-icon restaurant-owner-card-icon">
+                            <img src="..\Images\Images\restaurant-card.png">
+                        </div>
+                        <h3>Card</h3>
+                        <p>Check you restaurant's card</p>
                     </div>
                 </div>
             </div>
@@ -65,7 +72,8 @@ if ($result->num_rows > 0) {
             reservations: "http://localhost/resto/PHP/restaurant_owner_bookings.php",
             menu: "http://localhost/resto/PHP/restaurant_owner_menu.php",
             analytics: "http://localhost/resto/PHP/restaurant_owner_analytics.php",
-            contact: "http://localhost/resto/PHP/contactus.php"
+            contact: "http://localhost/resto/PHP/contactus.php",
+            card: "http://localhost/resto/PHP/restaurant_owner_update_card.php"
         };
         window.location.href = pages[page];
     }
