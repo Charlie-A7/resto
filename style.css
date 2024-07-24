@@ -1823,7 +1823,7 @@ button.btn-book:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
+  width: -webkit-fill-available !important;
   background-color: white;
   padding: 6rem;
   border-radius: 5px;
@@ -1848,7 +1848,7 @@ button.btn-book:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
+  width: -webkit-fill-available !important;
   background-color: white;
   padding: 6rem;
   border-radius: 5px;
