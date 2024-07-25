@@ -1911,3 +1911,7 @@ button.btn-book:hover {
 select {
   text-transform: capitalize !important;
 }
+
+#restaurant-owner-update-card-btn-save-edit-changes {
+  width: auto !important;
+}
