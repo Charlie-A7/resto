@@ -112,9 +112,6 @@ if (isset($_POST['edit_form'])) {
 
     <?php foreach (['starter', 'meal', 'dessert', 'drinks'] as $type): ?>
         <div class="type1 row justify-content-center">
-            <!-- <div class="col-12 col-md-4 type1-img">
-                <img src="..\Images\Images\<?php echo $type; ?>1.jpg">
-            </div> -->
             <div class="col-10 col-md-7 description1">
                 <div>
                     <h2 class="menu-h2"><?php echo ucfirst($type); ?></h2>
@@ -128,7 +125,6 @@ if (isset($_POST['edit_form'])) {
                         <div class="col-3 price1">
                             <h5><?php echo htmlspecialchars($item['item_price']); ?>$</h5>
                         </div>
-                        <!-- Edit and Delete Buttons -->
                         <div class="col-10 d-flex justify-content-center">
                             <div class="mx-2">
                                 <form action="restaurant_owner_menu.php" method="post" style="display:inline;">
@@ -165,7 +161,6 @@ if (isset($_POST['edit_form'])) {
 </div>
 
 
-<!-- Add Item Form -->
 <div class="container modal-add-menu-item hidden">
     <button class="close-modal-add-menu-item">&times;</button>
     <h2 class="text-center">Add New Item</h2>
@@ -196,7 +191,6 @@ if (isset($_POST['edit_form'])) {
 
 <div class="overlay-add-menu-item hidden"></div>
 
-<!-- Edit Item Form -->
 <?php if ($editItem): ?>
     <div class="container modal-edit-menu-item">
         <button class="close-modal">&times;</button>

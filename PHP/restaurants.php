@@ -20,7 +20,6 @@ $clone_result = array();
     }
 </style>
 
-<body>
     <div class="container-fluid px-5 text-white" id="container-restaurants">
         <h1 class="text-center m-4">Choose Your Restaurant</h1>
 
@@ -179,6 +178,3 @@ $clone_result = array();
     </script>
 
     <?php include 'footer.php'; ?>
-</body>
-
-</html>
