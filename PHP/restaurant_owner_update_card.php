@@ -28,9 +28,9 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     ?>
-    <div class="container px-5 text-white" id="container-restaurants">
+    <div class="container px-5 text-white my-5" id="container-restaurants">
         <div class="row d-flex justify-content-center">
-            <div class="col-12 col-sm-10 col-md-8 col-xl-6">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
                 <div class="restaurant-card">
                     <img src="<?php echo $row['image_url']; ?>" class="card-img-top" />
                     <div class="card-body restaurants-card-body">
@@ -92,18 +92,41 @@ if ($result->num_rows > 0) {
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
-            <div class="col-6 col-md-3 d-flex justify-content-center">
-                <button class="btn-primary rounded">Edit Image</button>
-            </div>
-            <div class="col-6 col-md-3 d-flex justify-content-center">
-                <button class="btn-primary rounded">Edit Location</button>
-            </div>
-            <div class="col-6 col-md-3 d-flex justify-content-center">
-                <button class="btn-primary rounded">Edit Price Range</button>
-            </div>
-            <div class="col-6 col-md-3 d-flex justify-content-center">
-                <button class="btn-primary rounded">Edit Food Types</button>
+        <div class="row d-flex justify-content-center mt-4">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
+                <form action="edit_restaurant_owner_card.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="restaurant_id" value="<?php echo $restaurant_id ?>">
+                    <div class="form-group">
+                        <label for="image_url">Image:</label>
+                        <input type="file" class="form-control" id="image_url" name="image">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location:</label>
+                        <input type="text" class="form-control" id="location" name="location"
+                            value="<?php echo $row['location']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="price_range">Price Range:</label>
+                        <select class="form-control" id="price_range" name="price_range">
+                            <option value="$" <?php echo ($row['price_range'] === '$') ? 'selected' : ''; ?>>$</option>
+                            <option value="$$" <?php echo ($row['price_range'] === '$$') ? 'selected' : ''; ?>>$$</option>
+                            <option value="$$$" <?php echo ($row['price_range'] === '$$$') ? 'selected' : ''; ?>>$$$</option>
+                            <option value="$$$$" <?php echo ($row['price_range'] === '$$$$') ? 'selected' : ''; ?>>$$$$
+                            </option>
+                            <option value="$$$$$" <?php echo ($row['price_range'] === '$$$$$') ? 'selected' : ''; ?>>$$$$$
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="food_types">Food Types:</label>
+                        <input type="text" class="form-control" id="food_types" name="food_types"
+                            value="<?php echo $row['food_types']; ?>">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary"
+                            id="restaurant-owner-update-card-btn-save-edit-changes">Save Changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
