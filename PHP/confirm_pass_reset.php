@@ -9,28 +9,28 @@ include 'header.php';
 
         <div class="text-center mb-4">
             <h4 class="mt-2 mb-4">Reset Password</h4>
-            <h6>Just enter your new password, and you're good to go.</h6>
+            <h6>Enter your new password and the key from the email you received.</h6>
         </div>
 
-        <form id="forgot-pass-form" method="POST" action="reset_password_process.php">
-
+        <form id="reset-pass-form" method="POST" action="reset_password_process.php">
 
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="password">Password</label>
-                <input type="password" id="password" placeholder="Password" class="form-control" name="password"
-                    required />
+                <label class="form-label" for="reset_key">Reset Key</label>
+                <input type="text" id="reset_key" placeholder="Reset Key" class="form-control" name="key" required />
             </div>
 
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="confirm_password"> Confirm Password</label>
-                <input type="password" id="confirm_password" placeholder="Confirm Password" class="form-control"
-                    name="confirm_password" required />
+                <label class="form-label" for="password">New Password</label>
+                <input type="password" id="password" placeholder="New Password" class="form-control" name="password" required />
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" placeholder="Confirm Password" class="form-control" name="confirm_password" required />
             </div>
 
             <div class="text-center pt-1 pb-1">
-                <button data-mdb-button-init data-mdb-ripple-init
-                    class="btn btn-primary btn-block fa-lg gradient-custom-3 mb-3 mb-lg-2 rounded" type="submit"
-                    id="reset-pass-btn">
+                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-3 mb-3 mb-lg-2 rounded" type="submit" id="reset-pass-btn">
                     Reset Password
                 </button>
             </div>
