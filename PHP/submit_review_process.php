@@ -36,6 +36,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param('ii', $avg_rating, $restaurant_id); // Ensure the rating and restaurant ID are integers
 
         if ($stmt->execute()) {
+            // Retrieve the restaurant owner's email
+            $getOwnerEmailQuery = "SELECT u.email FROM users u JOIN restaurants r ON u.restaurant_id = r.id WHERE r.id = ?";
+            $stmt = $conn->prepare($getOwnerEmailQuery);
+            $stmt->bind_param('i', $restaurant_id);
+            $stmt->execute();
+            $stmt->bind_result($owner_email);
+            $stmt->fetch();
+            $stmt->close();
+
+            // Prepare and send the email
+            $subject = 'New Review Submitted for Your Restaurant';
+            $email_message = "A new review has been submitted for your restaurant.\n\n"
+                . "Booking ID: $booking_id\n"
+                . "Review Details:\n"
+                . "Rating: $rating\n"
+                . "Comment: $comment\n"
+                . "Average Rating: $avg_rating\n";
+            $headers = 'From: charlieaintablian@gmail.com';
+            $owner_email = 'charlieaintablian@gmail.com';
+
+            if (mail($owner_email, $subject, $email_message, $headers)) {
+            } else {
+                echo 'Failed to send email.';
+            }
+
             header("Location: http://localhost/resto/PHP/bookings.php");
             $conn->close();
             exit();
