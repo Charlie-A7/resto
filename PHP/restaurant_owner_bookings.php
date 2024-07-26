@@ -58,12 +58,25 @@ if ($result->num_rows > 0) {
                              INNER JOIN menu m ON ps.item_id = m.item_id
                              WHERE ps.booking_id = $booking_id";
         $starters_result = $conn->query($starters_sql);
+
+        // Retrieve rating and comment from reviews
+        $rating_sql = "SELECT rating, comment FROM reviews WHERE booking_id = ?";
+        $stmt_rating = $conn->prepare($rating_sql);
+        $stmt_rating->bind_param('i', $booking_id);
+        $stmt_rating->execute();
+        $rating_result = $stmt_rating->get_result();
+        $rating_row = $rating_result->fetch_assoc();
+
+        $rating = isset($rating_row['rating']) ? $rating_row['rating'] : 'No rating';
+        $comment = isset($rating_row['comment']) ? $rating_row['comment'] : 'No comment';
+
         ?>
         <div class="row m-3">
             <div class="col-12">
                 <div class="card p-3">
                     <div class="booked-info">
                         <h3>Customer Username: <?php echo $customer_row['username'] ?></h3>
+                        <h4>Booking ID: <?php echo $booking_id; ?></h4>
                         <h4>Date: <?php echo $formattedDate; ?></h4>
                         <h4>Time: <?php echo $formattedTime; ?></h4>
                         <h5>Number of people: <?php echo $row['nb_of_people']; ?></h5>
@@ -84,6 +97,10 @@ if ($result->num_rows > 0) {
                         ?>
                         <h5>Total: <?php echo $row['total']; ?> $</h5>
                     </div>
+                    <?php if ($status == 'accepted') { ?>
+                        <h5>Rating: <?php echo $rating; ?></h5>
+                        <h5>Comment: <?php echo $comment; ?> </h5>
+                    <?php } ?>
                     <?php if ($status == 'accepted') { ?>
                         <h5 class="text-success">Accepted</h5>
                     <?php }
