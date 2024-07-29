@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result_owner->num_rows > 0) {
         $row_owner = $result_owner->fetch_assoc();
-        $owner_email = 'charlieaintablian@gmail,com';//$row_owner['email'];
+        $owner_email = 'charlieaintablian@gmail.com';//$row_owner['email'];
 
         // Prepare the email
         $to = $owner_email;
